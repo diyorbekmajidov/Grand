@@ -1,0 +1,231 @@
+/*--------------------------------------------------------------
+  20. Team
+----------------------------------------------------------------*/
+.cs_team.cs_style_1 {
+  max-width: 420px;
+  margin: 0 auto;
+
+  .cs_team_thumbnail {
+    width: 75%;
+    max-width: 300px;
+    margin: 0 auto;
+
+    img {
+      border-radius: inherit;
+    }
+  }
+
+  .cs_team_info {
+    width: 100%;
+    padding: 175px 30px 24px;
+    margin-top: -156px;
+    transition: all 0.3s ease;
+  }
+
+  .cs_social_links.cs_style_1 {
+    a {
+      background: none;
+
+      &::after,
+      &::before {
+        display: none;
+      }
+
+      &:nth-child(1) {
+        background-color: #E7F1FF;
+        color: #1877F2;
+      }
+
+      &:nth-child(2) {
+        background-color: #FFFAE3;
+        color: #FED91F;
+      }
+
+      &:nth-child(3) {
+        background-color: #E1F5FF;
+        color: #0077B5;
+      }
+
+      &:nth-child(4) {
+        background-color: #FFEBEE;
+        color: #E60023;
+      }
+
+      &:hover {
+
+        &:nth-child(1) {
+          background-color: #1877F2;
+          color: #E7F1FF;
+        }
+
+        &:nth-child(2) {
+          background-color: #FED91F;
+          color: var(--heading-color);
+        }
+
+        &:nth-child(3) {
+          background-color: #0077B5;
+          color: #E1F5FF;
+        }
+
+        &:nth-child(4) {
+          background-color: #E60023;
+          color: #FFEBEE;
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .cs_team_info {
+      box-shadow: 0px 10px 50px 10px #E8E8E8;
+    }
+  }
+}
+
+/*---------------------------------------------
+ Team Details Page
+----------------------------------------------*/
+.cs_team_details {
+  p {
+    font-size: 18px;
+    font-family: var(--heading-font);
+    margin-bottom: 30px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  h2 {
+    font-size: 48px;
+    line-height: 1.21em;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  ul {
+    li {
+      color: var(--heading-color);
+      list-style: disc;
+      margin-bottom: 15px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .cs_team_info_wrapper {
+    padding: 40px;
+    margin-bottom: 63px;
+  }
+
+  .cs_team_thumbnail {
+
+    img {
+      width: 100%;
+      border-radius: inherit;
+    }
+  }
+
+  .cs_team_info {
+    padding-left: 16px;
+  }
+
+  .cs_team_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px 30px;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--border-color);
+
+    h3 {
+      margin-bottom: -6px;
+    }
+  }
+
+  .cs_social_links.cs_style_1 {
+    gap: 7px;
+
+    a {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(245deg, #fff 50%, #fff 50%);
+      color: var(--heading-color);
+
+      &::after {
+        display: none;
+      }
+
+      &::before {
+        opacity: 0;
+      }
+
+      &:hover {
+        color: var(--white-color);
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .cs_contact_list {
+    padding-top: 45px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    li {
+      padding-left: 46px;
+      position: relative;
+      list-style: none;
+    }
+
+    .cs_contact_icon {
+      width: 36px;
+      height: 36px;
+      padding: 5px;
+      position: absolute;
+      left: 0;
+      top: -5px;
+    }
+
+    i,
+    a:hover {
+      background: linear-gradient(245deg, #D324A8 -67.04%, #551DFF 129.05%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+  @media (max-width:1199px) {
+    .cs_team_info {
+      padding-left: 0;
+    }
+
+  }
+
+  @media (max-width:767px) {
+    .cs_team_info_wrapper {
+      padding: 20px 20px 40px;
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 36px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+}
