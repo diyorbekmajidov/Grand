@@ -1,345 +1,485 @@
-<!DOCTYPE html><html lang="en"><head>
-    {% load static %}
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>GFU. GRAND</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
+<!DOCTYPE html>
+{% load static %}
 
-  <!-- Favicons -->
-  <link href="{% static 'assets/images/tg_image_3682980900.png' %}" rel="icon">
-  <link href="{% static 'assets/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-
-  <!-- Vendor CSS Files -->
-  <link href="{% static 'assets/css/bootstrap.min_1.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/css/bootstrap-icons.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/css/aos.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/css/glightbox.min.css' %}" rel="stylesheet">
-  <link href="{% static 'assets/css/swiper-bundle.min.css' %}" rel="stylesheet">
-
-  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
-
-  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
-
-  <!-- Main CSS File -->
-  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+<html class="no-js" lang="en">
+  <head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="SaasoX - saas & sofTware HTML Template">
+    <meta name="author" content="Themeservices">
+    <!-- Favicon Icon -->
+    <link rel="icon" href="{% static 'assets2/img/favicon.png' %}">
+    <!-- Site Title -->
+    <title>O‘zbekiston-Finlandiya pedagogika instituti |Ta’lim grantlarini qayta taqsimlash platformasi.</title>
+    <link rel="stylesheet" href="{% static 'assets2/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/css/fontawesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/css/odometer.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/css/slick.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets2/css/style.css' %}">
 
   <style>
-    .btn-get-started {
-        background-color: #4DC680;
-        margin: 5px;
-        display: inline-block;
-        color: white;
-        padding: 8px 20px;
-        border: none;
-        border-radius: 10px;
-        text-decoration: none;
-    }
-    .my-btn-color {
-      display: inline-block;
-      border-radius: 15px;
-      padding: 5px 15px;
-      color: #4DC680;
-      border: 1px solid #4DC680;
-    }
-
-    .my-btn-color:hover {
-      background-color: #4DC680;
-      color: white;
-    }
-    .my-text {
-      color: black;
-    }
-    .my-text:hover {
-      color: #4DC680;
+    @media (max-width: 768px) {
+      li > a[aria-label="Menu link"] {
+        display: none;
+      }
     }
   </style>
-
-
-</head>
-
-<body class="index-page">
-
-  <header id="header" class="header d-flex align-items-center sticky-top">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-      <a href="/" class="logo d-flex align-items-center me-auto">
-        <h1 class="sitename text-warning">GRAND</h1>
-      </a>
-
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="/" class="active">Bosh sahifa</a></li>
-          <li><a href="/#about">Ma'lumotlar</a></li>
-          <li><a href="/#contact">Aloqa</a></li>
-
-          
-          <a class="btn-getstarted" href="/users/login/">Kirish</a>
-          
-
-        </ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+  </head>
+  <body>
+    <!-- Start Preloader -->
+    <div class="cs_preloader cs_white_bg">
+      <div class="cs_preloader_in position-relative">
+        <span></span>
+      </div>
     </div>
-  </header>
-
-
-
-  <main>
-    
-
-
-    
-    <section id="hero" class="hero section">
-
-      <div class="container">
-        <div class="row gy-4">
-          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
-            <h1>Ta’lim grantlarini qayta taqsimlash uchun platforma.</h1>
-            <p>Hemis orqali kirib grant uchun ariza topshiring!</p>
-            <div class="d-flex">
-              
-                <a href="/student/login/" class="btn-get-started">Hemis orqali kirish</a>
-              
-              <a href="https://www.youtube.com/watch?v=dmy9i7GcbTE" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Qo'lanma</span></a>
+    <!-- End Preloader -->
+    <!-- Start Header Section -->
+    <header class="cs_site_header cs_style_1 cs_sticky_header cs_heading_font position-relative">
+      <div class="cs_main_header">
+        <div class="container">
+          <div class="cs_main_header_in position-relative">
+            <div class="cs_header_shape position-absolute">
+              <img src="{% static 'assets2/img/header-shape.svg' %}" alt="Header shape">
             </div>
+            <div class="cs_main_header_left position-relative z-1">
+              <a class="cs_site_branding" href="index.html" aria-label="Home page link">
+              <img src="{% static 'assets2/img/logo.svg' %}" alt="Logo">
+              </a>
+            </div>
+            <div class="cs_main_header_center">
+              <div class="cs_nav">
+                <ul class="cs_nav_list">
+                  <li class="">
+                    <a href="#home" aria-label="Menu link">Bosh sahifa</a>
+                   
+                  </li>
+                  <li><a href="/#Tizimhaqida"  aria-label="Menu link">Tizim haqida</a></li>
+                  
             
-          </div>
-          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
-            <img src="{% static 'assets/images/hero-img.png' %}" class="img-fluid animated" alt="">
-          </div>
-        </div>
-      </div>
-
-    </section><!-- /Hero Section -->
-
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="10">
-
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1980" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Universitet talabalar</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Kelib tushgan arizalar</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Tasdiqlangan arizalar</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Rad etilgan arizalar</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
-
-
-    <!-- About Section -->
-    <section id="about" class="about section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Ma'lumotlar<br></span>
-        <h2>Ma'lumotlar</h2>
-        <p>Grant uchun ariza topshirish shartlari va qo'llanma.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container">
-
-        <div class="row gy-4">
-          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
-            <img src="{% static 'assets/images/about.png' %}" class="img-fluid" alt="">
-            <a href="https://www.youtube.com/watch?v=dmy9i7GcbTE" class="glightbox pulsating-play-btn"></a>
-          </div>
-          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
-            <h3>Universitetda talabalarga grantlarni taqdim etish va qayta taqsimlash tartibi to'g'risida </h3>
-            <p class="fst-italic">
-               Universitet tomonidan tabaqalashtirilgan tarzda 
-               Grandlarni qayta taqsimlash uchun ariza topshirishga 
-               qo'yilgan talablar:
-            </p>
-            <ul>
-              <li><i class="bi bi-check2-all"></i> <span>O'zbekiston Respublikasi fuqorosi</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>GPA ko'rsatkichi 3.5 dan baland bo'lishi</span></li>
-              <li><i class="bi bi-check2-all"></i> <span>Ijtimoiy faol talaba</span></li>
-            </ul>
-            <p>
-              Ariza topshirish uchun <a href="/student/login/">Hemis</a> orqali kirib, ariza qoldiring.
-              Qulaylik yaratish maqsadida ariza ma'lumotlaringiz avtomatik ravishda to'ldiriladi.
-              Arizangizni yuborganingizdan so'ng, mutaxassislar tomonidan ko'rib chiqiladi. 
-              Yakuniy natijalarni <a href="https://uzgeouniver.uz/uz//">Universitetning rasmiy veb-saytida</a> e'lon qilinadi. 
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <span>Aloqa ma'lumotlari</span>
-        <h2>Aloqa </h2>
-        <p>Murojaatingizni qoldiring mutahasislarimiz siz bilan aloqaga chiqishadi!</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-6">
-            <div class="info-wrap">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Bizning manzil</h3>
-                  <p>Manzil: Samarqand sh, Spitamen shoh ko‘chasi, 166-uy</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Bizga qo'ng'iroq qiling</h3>
-                  <p>+998 (71) 209-11-69</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Pochta</h3>
-                  <p>info@uzgeouniver.uz</p>
-                </div>
-              </div><!-- End Info Item -->
-
-            </div>
-          </div>
-          <div class="col-lg-6 gy-4">
-              <div class="info-wrap">
-              
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3382.981656782843!2d69.33783159382342!3d41.34067446325612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef466b1d2a92d%3A0x1fa3714a97987c89!2sGeologiya%20fanlari%20universiteti!5e1!3m2!1suz!2s!4v1747722029027!5m2!1suz!2s" width="580" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                
+                   <li><a href="/#korsat"  aria-label="Menu link">Ko'rsatkichlar </a></li>
+                   <li><a href="/#savol" aria-label="Menu link">Tez-tez so'raladigan savollarga javoblar </a></li>
+                       <li><a href="/#aloqa" aria-label="Menu link">Aloqa </a></li>   
+                </ul>
               </div>
+            </div>
+            <div class="cs_main_header_right">
+              <a href="contact.html" aria-label="Get started button" class="cs_btn cs_style_1 cs_bg_1 cs_fs_14 cs_bold cs_white_color text-uppercase">
+              <span>Tizimga kirish</span>
+              <span class="cs_btn_icon"><i class="fa-solid fa-arrow-right"></i></span>
+              </a>
+            </div>
           </div>
         </div>
-
       </div>
+    </header>
+    <!-- End Header Section -->
+    <!-- Start Hero Section -->
+    <section class="cs_hero cs_style_1">
+      <div class="cs_hero_content cs_accent_bg cs_bg_filed cs_radius_50 position-relative" data-src="{% static 'assets2/img/hero-bg-1.svg' %}">
+        <div class="container">
+          <div class="row cs_gap_y_40 align-items-center">
+            <div class="col-lg-5 order-lg-2">
+              <div class="cs_hero_thumbnail">
+                <img src="{% static 'assets2/img/hero-img-1.png' %}" alt="Hero image">
+              </div>
+            </div>
+            <div class="col-lg-7 order-lg-1">
+              <div class="cs_hero_text cs_section_heading cs_style_1 position-relative z-2">
+                <p class="cs_hero_subtitle cs_white_color cs_heading_font cs_mb_22 text-center">
+                  <span class="cs_theme_color_4">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.5 0L9.52568 5.47432L15 7.5L9.52568 9.52568L7.5 15L5.47432 9.52568L0 7.5L5.47432 5.47432L7.5 0Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <span>Ta'lim Grantlari – Adolatli va Shaffof Taqsimoti</span>
+                  <span class="cs_theme_color_4">
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M7.5 0L9.52568 5.47432L15 7.5L9.52568 9.52568L7.5 15L5.47432 9.52568L0 7.5L5.47432 5.47432L7.5 0Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                </p>
+                <h1 class="cs_hero_title cs_fs_64 cs_white_color cs_mb_15 wow fadeInUp">GPA 3.5+ bo‘lganlar uchun ta'lim grantlari — Adolatli va ochiq tanlovi</h1>
+                <p class="cs_hero_desc cs_white_color cs_mb_28">Endi grantlar faqat bilim va faollikka asoslanadi.
+ <br>  GPA 3.5 va undan yuqori bo‘lgan talabalar HEMIS orqali tizimga krib  ariza topshirishlari va 2025-yil 25-avgustgacha natijalarni kuzatishlari mumkin</p>
+                <div class="cs_btns_group">
+                  <a href="#" aria-label="Get started button" class="cs_btn cs_style_1 cs_theme_bg_4 cs_fs_14 cs_bold cs_heading_color text-uppercase">
+                  <span>Ariza yuborish</span>
+                  <span class="cs_btn_icon"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                  <div class="cs_client_info_wrapper">
+                    <img src="{% static 'assets2/img/customers-group.png' %}" alt="Customers image">
+                    <div>
+                      <h3 class="cs_fs_30 cs_semibold cs_white_color">30+</h3>
+                      <p class="cs_white_color mb-0">Arizalar soni</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    </section><!-- /Contact Section --> 
 
-
-  </main>
-
-
-
-  <footer id="footer" class="footer mt-50">
+    <!-- Start Customer Story Section -->
+    <section>
+      <div class="cs_height_120 cs_height_lg_80"></div>
+      <div class="container" id="Tizimhaqida">
+        <div class="cs_card cs_style_1 cs_type_5">
+          <div class="row cs_gap_y_30">
+            <div class="col-lg-5 order-lg-2">
+              <a href="https://www.youtube.com/embed/HC-tgFdIcB0" aria-label="Click to play video" class="cs_video cs_style_1 cs_center cs_video_open cs_bg_filed cs_radius_15 position-relative" data-src="{%static 'assets2/img/video-bg-1.jpg' %}">
+                <span class="cs_player_btn cs_style_1 cs_center cs_radius_100 cs_theme_bg_2 cs_white_color position-relative"><i class="fa-solid fa-play"></i>
+                </span>
+                <div class="cs_vector_shape_5 position-absolute">
+                  <img src="{% static 'assets2/img/vector-10.svg' %}" alt="Vector shape">
+                </div>
+              </a>
+            </div>
+            <div class="col-lg-7 order-lg-1">
+              <div class="cs_card_content">
+                <div class="cs_section_heading cs_style_1 cs_mb_20">
+                  <div class="cs_section_subtitle cs_fs_18 cs_heading_color cs_mb_22">
+                    <img src="{% static 'assets2/img/icons/star-1.svg' %}" alt="Star icon">
+                    <span>Costumer Story</span>
+                    <img src="{% static 'assets2/img/icons/star-1.svg' %}" alt="Star icon">
+                  </div>
+                  <h2 class="cs_section_title cs_fs_48 cs_semibold text-capitalize mb-0">How a certain consumer used a product successfully</h2>
+                </div>
+                <p class="cs_card_desc cs_mb_51">CRM management is comprehensive contact management, allowing businesses to centralize and organize customer information for easy access.</p>
+                <div class="cs_btns_group">
+                  <a href="#" aria-label="Get started button" class="cs_btn cs_style_1 cs_bg_1 cs_fs_14 cs_bold cs_white_color text-uppercase">
+                  <span>read costumer story </span>
+                  <span class="cs_btn_icon"><i class="fa-solid fa-arrow-right"></i></span>
+                  </a>
+                  <div class="cs_client_info_wrapper">
+                    <img src="{% static 'assets2/img/customers-group-2.png' %}" alt="Customers image">
+                    <div>
+                      <h3 class="cs_fs_18 cs_normal mb-0">Happy Costumer</h3>
+                      <p class="mb-0"><span class="cs_theme_color_5"><i class="fa-solid fa-star"></i></span> 3.5(10k Review)</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
-    <div class="container footer-top">
-      <div class="row gy-4">
-        <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="d-flex align-items-center">
-            <span class="sitename">GFU</span>
-          </a>
-          <div class="footer-contact pt-3">
-            <p><strong>Manzil:</strong> Toshkent sh. Mirzo Ulug'bek tumani, </p>
-            <p>Olimlar ko'chasi, 64-uy</p>
-            <p class="mt-3"><strong>Telefon raqam:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@uzgeouniver.uz</span></p>
+    <!-- End Customer Story Section -->
+    <!-- Start Features Section -->
+   
+      <div class="cs_height_120 cs_height_lg_80"></div>
+      <div class="container" >
+        <div class="cs_section_heading cs_style_1 cs_center_column cs_mb_47 text-center">
+          <div class="cs_section_subtitle cs_fs_18 cs_heading_color cs_mb_22">
+            <img src="{% static 'assets2/img/icons/star-1.svg' %}" alt="Star icon">
+            <span>Awesome Feature</span>
+            <img src="{% static 'assets2/img/icons/star-1.svg' %}" alt="Star icon">
+          </div>
+          <h2 class="cs_section_title cs_fs_48 cs_semibold mb-0 wow fadeInDown">Our Fantastic App Features</h2>
+        </div>
+        <div class="cs_features_steps_wrapper">
+          <div class="cs_feature_step cs_center_column">
+            <div class="cs_step_index cs_radius_50 cs_fs_14 cs_semibold cs_heading_color text-uppercase"><span>Step One</span></div>
+            <div class="cs_vertical_line"></div>
+            <div class="cs_step_indfo_wrapper cs_radius_30 text-center position-relative">
+              <h3 class="cs_fs_24 cs_semibold cs_mb_10">Download App</h3>
+              <p class="mb-0">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+              <img src="{% static 'assets2/img/border-shape.png' %}" alt="Border shape">
+            </div>
+          </div>
+          <div class="cs_feature_step cs_center_column">
+            <div class="cs_step_index cs_radius_50 cs_fs_14 cs_semibold cs_heading_color text-uppercase"><span>Step Two</span></div>
+            <div class="cs_vertical_line"></div>
+            <div class="cs_step_indfo_wrapper cs_radius_30 text-center position-relative">
+              <h3 class="cs_fs_24 cs_semibold cs_mb_10">Create account</h3>
+              <p class="mb-0">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+              <img src="{% static 'assets2/img/border-shape.png' %}" alt="Border shape">
+            </div>
+          </div>
+          <div class="cs_feature_step cs_center_column">
+            <div class="cs_step_index cs_radius_50 cs_fs_14 cs_semibold cs_heading_color text-uppercase"><span>Step Three</span></div>
+            <div class="cs_vertical_line"></div>
+            <div class="cs_step_indfo_wrapper cs_radius_30 text-center position-relative">
+              <h3 class="cs_fs_24 cs_semibold cs_mb_10">Install App, & Enjoy</h3>
+              <p class="mb-0">All the generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet.</p>
+              <img src="{% static 'assets2/img/border-shape.png' %}" alt="Border shape">
+            </div>
           </div>
         </div>
+      </div>
+      <div class="cs_height_120 cs_height_lg_80"></div>
+    </section>
+    <!-- End Features Section -->
 
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Foydali havolalar</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz/">Bizning Universitet</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz/pages/uni-haqida">Biz haqimizda</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz//">Xizmatlar</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz//">Tuzilma</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-2 col-md-3 footer-links">
-          <h4>Interaktiv xizmatlar</h4>
-          <ul>
-            <li><i class="bi bi-chevron-right"></i> <a href="#">Elektron kutubxona</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://murojaat.uzgeouniver.uz/">Virtual qabul</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://vacancy.uzgeouniver.uz/uz/">Vakansiyalar</a></li>
-            <li><i class="bi bi-chevron-right"></i> <a href="https://pf.bimm.uz/">Portfolio</a></li>
-          </ul>
-        </div>
-
-        <div class="col-lg-4 col-md-12">
-          <h4>Bizning ijtimoiy tarmoqlar</h4>
-          
-          <div class="social-links d-flex">
-            <a href="https://www.youtube.com/channel/UCHbNGfH1JzavP51xMmNN_eQ?view_as=subscriber"><i class="bi bi-youtube"></i></a>
-            <a href="https://www.facebook.com/geoscience.official"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/geologiya_fanlari_universitet/"><i class="bi bi-instagram"></i></a>
-            <a href="https://t.me/gfu_rasmiy_kanali"><i class="bi bi-telegram"></i></a>
+   
+  
+    <!-- Start Counter Section -->
+    <div class="cs_counter cs_style_1" id="korsat">
+      <div class="cs_counter_content_wrapper cs_accent_bg cs_radius_30 cs_bg_filed" data-src="{% static 'assets2/img/counter-bg-1.svg' %}">
+        <div class="container">
+          <div class="row cs_gap_y_30">
+            <div class="col-lg-3 col-sm-6">
+              <div class="cs_numberbox">
+                <div class="cs_counter_number cs_fs_74 cs_semibold cs_white_color cs_mb_10">
+                  <span class="odometer" data-count-to="56"></span>K+
+                </div>
+                <p class="cs_fs_18 cs_white_color mb-0">Customers visit app <br> every months</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="cs_numberbox">
+                <div class="cs_counter_number cs_fs_74 cs_semibold cs_white_color cs_mb_10">
+                  <span class="odometer" data-count-to="32"></span>K+
+                </div>
+                <p class="cs_fs_18 cs_white_color mb-0">Total downloaded of <br> our app</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="cs_numberbox">
+                <div class="cs_counter_number cs_fs_74 cs_semibold cs_white_color cs_mb_10">
+                  <span class="odometer" data-count-to="156"></span>K+
+                </div>
+                <p class="cs_fs_18 cs_white_color mb-0">Total Members of Relatix <br> App Users</p>
+              </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+              <div class="cs_numberbox">
+                <div class="cs_counter_number cs_fs_74 cs_semibold cs_white_color cs_mb_10">
+                  <span class="odometer" data-count-to="42"></span>+
+                </div>
+                <p class="cs_fs_18 cs_white_color mb-0">Satisfaction rate from our <br> customers.</p>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </div>
-
-    <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">GFU</strong> <span>Raqamli ta'lim texnologiyalari markazi</span></p>
-      
-  </div></footer>
+    <!-- End Counter Section -->
   
-  <a href="#">
-
-  <!-- Scroll Top -->
-  </a><a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-  <!-- Vendor JS Files -->
-  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
-  <script src="{% static 'assets/js/validate.js' %}"></script>
-  <script src="{% static 'assets/js/aos.js' %}"></script>
-  <script src="{% static 'assets/js/glightbox.min.js' %}"></script>
-  <script src="{% static 'assets/js/purecounter_vanilla.js' %}"></script>
-  <script src="{% static 'assets/js/imagesloaded.pkgd.min.js' %}"></script>
-  <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
-  <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
-
-  <!-- Main JS File -->
-  <script src="{% static 'assets/js/main.js' %}"></script>
-  <!-- Bootstrap JS (CDN) -->
-  <script src="{% static 'assets/js/bootstrap.bundle.min_1.js' %}"></script>
-
-
-</body></html>
+    <!-- Start FAQ Section -->
+    <section class="cs_faq cs_style_1 cs_gray_bg position-relative overflow-hidden" id="savol">
+      <div class="cs_height_120 cs_height_lg_80"></div>
+      <div class="container">
+        <div class="row cs_gap_y_30 align-items-center position-relative z-1">
+          <div class="col-lg-6 order-lg-2">
+            <div class="cs_faq_thumbnail">
+              <img src="{% static 'assets2/img/faq-img-1.png' %}" alt="FAQ image">
+            </div>
+          </div>
+          <div class="col-lg-6 order-lg-1">
+            <div class="cs_faq_content">
+              <div class="cs_section_heading cs_style_1 cs_mb_20">
+                <div class="cs_section_subtitle cs_fs_18 cs_heading_color cs_mb_22">
+                  <img src="{% static 'assets2/img/icons/star-1.svg' %}" alt="Star icon">
+                  <span>faq</span>
+                  <img src="{% static 'assets2/img/icons/star-1.svg' %}" alt="Star icon">
+                </div>
+                <h2 class="cs_section_title cs_fs_48 cs_semibold mb-0 wow fadeInDown">Frequently Ask Questions</h2>
+              </div>
+              <p class="cs_card_desc cs_mb_56">Highlight the most important features and functionalities of the app. Use concise descriptions or bullet points to emphasize what sets your app</p>
+              <div class="cs_faq_wrapper_1">
+                <div class="cs_accordian cs_style_1 cs_gray_bg cs_radius_10 position-relative">
+                  <div class="cs_accordian_head">
+                    <h3 class="cs_accordian_title cs_fs_20 cs_semibold mb-0">What pricing plans do you offer for your app?</h3>
+                    <span class="cs_accordian_toggler position-absolute"></span>
+                  </div>
+                  <div class="cs_accordian_body">
+                    <p>No, we are transparent about our pricing structure, and there are hidden fees or additional charges. The price you see is the price you pay,</p>
+                  </div>
+                </div>
+                <div class="cs_accordian cs_style_1 cs_gray_bg cs_radius_10 position-relative active">
+                  <div class="cs_accordian_head">
+                    <h3 class="cs_accordian_title cs_fs_20 cs_semibold mb-0">Are there any hidden fees or additional charges?</h3>
+                    <span class="cs_accordian_toggler position-absolute"></span>
+                  </div>
+                  <div class="cs_accordian_body">
+                    <p>No, we are transparent about our pricing structure, and there are hidden fees or additional charges. The price you see is the price you pay,</p>
+                  </div>
+                </div>
+                <div class="cs_accordian cs_style_1 cs_gray_bg cs_radius_10 position-relative">
+                  <div class="cs_accordian_head">
+                    <h3 class="cs_accordian_title cs_fs_20 cs_semibold mb-0">What payment methods do you accept?</h3>
+                    <span class="cs_accordian_toggler position-absolute"></span>
+                  </div>
+                  <div class="cs_accordian_body">
+                    <p>No, we are transparent about our pricing structure, and there are hidden fees or additional charges. The price you see is the price you pay,</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cs_faq_shape_1 position-absolute">
+          <img src="{% static 'assets2/img/vector-5.svg' %}" alt="Vector shape">
+        </div>
+        <div class="cs_faq_shape_2 position-absolute">
+          <img src="{% static 'assets2/img/star-shape.svg' %}" alt="Star shape">
+        </div>
+      </div>
+      <div class="cs_height_120 cs_height_lg_80"></div>
+    </section>
+    <!-- End FAQ Section -->
+   
+    <!-- Start CTA Section -->
+    <section class="cs_cta cs_style_1">
+      <div class="cs_cta_content_wrapper cs_accent_bg cs_radius_30 cs_bg_filed" data-src="{% static 'assets2/img/cta-bg-1.svg' %}">
+        <div class="cs_height_60 cs_height_lg_60"></div>
+        <div class="container">
+          <div class="row cs_gap_y_40 align-items-center">
+            <div class="col-lg-6 order-lg-2">
+              <div class="cs_cta_thumbnail">
+                <img src="{% static 'assets2/img/cta-img-1.png' %}" alt="Phone image">
+              </div>
+            </div>
+            <div class="col-lg-6 order-lg-1">
+              <div class="cs_cta_text">
+                <h2 class="cs_fs_48 cs_semibold cs_white_color cs_mb_20 text-capitalize wow fadeInDown">Let’s download free from apple and play store</h2>
+                <p class="cs_white_color cs_mb_33">Highlight the most important features and functionalities of the app. Use concise descriptions or bullet points to emphasize what sets your app</p>
+                <div class="cs_cta_btns">
+                  <a href="#" aria-label="Download App button" class="cs_cta_btn cs_white_color">
+                    <span class="cs_btn_icon">
+                      <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M21.7383 16.7637C21.7383 16.9004 21.5332 20.9336 25.9766 23.0527C25.1562 25.582 22.2852 31.1875 18.9355 31.1875C17.0215 31.1875 15.9277 29.957 13.7402 29.957C11.4844 29.957 10.2539 31.1875 8.54492 31.1875C5.26367 31.3242 2.11914 25.1719 1.23047 22.6426C0.546875 20.7285 0.273438 18.8828 0.273438 17.1055C0.273438 11.0215 4.30664 8.08203 8.13477 8.01367C9.98047 8.01367 12.3047 9.3125 13.3301 9.3125C14.2871 9.3125 16.9531 7.74023 19.4141 7.94531C21.9434 8.15039 23.8574 9.10742 25.1562 10.9531C22.9004 12.3887 21.7383 14.2344 21.7383 16.7637ZM17.9102 5.55273C16.543 7.125 14.9023 8.01367 13.125 7.87695C12.9883 6.03125 13.6719 4.32227 14.9023 2.95508C15.9961 1.72461 17.9102 0.699219 19.5508 0.5625C19.5508 1.31445 19.7559 3.36523 17.9102 5.55273Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div class="cs_btn_text">
+                      <p class="cs_fs_15 mb-0">Get it on</p>
+                      <p class="cs_fs_18 cs_medium mb-0">App Store</p>
+                    </div>
+                  </a>
+                  <a href="#" aria-label="Download App button" class="cs_cta_btn cs_white_color">
+                    <span class="cs_btn_icon">
+                      <svg width="28" height="31" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.043 14.5195L21.5586 11.0039L5.09375 1.51172L18.043 14.5195ZM1.75391 0.75C0.992188 1.16016 0.464844 1.92188 0.464844 2.85938V28.6992C0.464844 29.6367 0.992188 30.3984 1.75391 30.75L16.7539 15.75L1.75391 0.75ZM26.6562 13.9922L23.1992 12L19.332 15.75L23.1992 19.5586L26.7148 17.5664C27.7695 16.7461 27.7695 14.8125 26.6562 13.9922ZM5.09375 29.9883L21.5586 20.5547L18.043 17.0391L5.09375 29.9883Z" fill="currentColor"/>
+                      </svg>
+                    </span>
+                    <div class="cs_btn_text">
+                      <p class="cs_fs_15 mb-0">Get it on</p>
+                      <p class="cs_fs_18 cs_medium mb-0">Google Play</p>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="cs_height_60 cs_height_lg_60"></div>
+      </div>
+    </section>
+    <!-- End CTA Section -->
+  
+    <!-- Start Footer Section -->
+    <footer class="cs_footer cs_style_1 cs_bg_filed cs_heading_color" data-src="{% static 'assets2/img/footer-bg-1.svg' %}" id="aloqa">
+      <div class="cs_height_130 cs_height_lg_80"></div>
+      <div class="container">
+        <div class="cs_footer_top position-relative">
+          <div class="cs_newsletter cs_style_1">
+            <div class="cs_newsletter_text">
+              <h2 class="cs_fs_48 cs_semibold cs_mb_20 wow fadeInDown">Subscribe our Newsletter</h2>
+              <p class="cs_heading_color mb-0">Start with a free one-month trial. No purchase is necessary.</p>
+            </div>
+            <form class="cs_newsletter_form cs_fs_14">
+              <div class="cs_input_wrapper position-relative">
+                <span class="cs_input_icon">
+                <img src="{% static 'assets2/img/icons/mail.svg' %}" alt="Mail icon">
+                </span>
+                <input type="email" name="email" placeholder="Your Email Address">
+              </div>
+              <button type="submit" aria-label="Subscribe button" class="cs_btn cs_style_1 cs_bg_1 cs_fs_14 cs_bold cs_white_color text-uppercase">Subscribe Now</button>
+            </form>
+          </div>
+        </div>
+        <div class="cs_footer_main">
+          <div class="cs_footer_widget_wrapper">
+            <div class="cs_footer_widget cs_text_widget">
+              <div class="cs_brand cs_mb_32">
+                <img src="{% static 'assets2/img/logo.svg' %}" alt="Logo">
+              </div>
+              <p class="cs_mb_32">It involves the use of CRM software and strategies to effectively manage customer relationships, improve customer satisfaction, and drive business growth. </p>
+              <div class="cs_social_links cs_style_1 cs_heading_color">
+                <a href="#" aria-label="Social link"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Social link"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="#" aria-label="Social link"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Social link"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Social link"><i class="fa-brands fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="cs_footer_widget cs_links_widget">
+              <h3 class="cs_footer_widget_title cs_fs_24 cs_semibold cs_mb_29">Useful Links</h3>
+              <ul class="cs_footer_menu cs_mp_0">
+                <li><a href="index.html" aria-label="Home page link">Home</a></li>
+                <li><a href="about-us.html" aria-label="About page link">About us</a></li>
+                <li><a href="services.html" aria-label="Services page link">Services</a></li>
+                <li><a href="blog.html" aria-label="Blog page link">Blog</a></li>
+                <li><a href="contact.html" aria-label="Contact page link">Contact Us</a></li>
+              </ul>
+            </div>
+            <div class="cs_footer_widget cs_help_widget">
+              <h3 class="cs_footer_widget_title cs_fs_24 cs_semibold cs_mb_29">Help & Support</h3>
+              <ul class="cs_footer_menu cs_mp_0">
+                <li><a href="faqs.html" aria-label="Faqs page link">FAQs</a></li>
+                <li><a href="#" aria-label="Support page link">Support</a></li>
+                <li><a href="integrations.html" aria-label="Integrations page link">How It Work</a></li>
+                <li><a href="#" aria-label="Terms & conditions page link">Terms & Conditions</a></li>
+                <li><a href="#" aria-label="Privacy policy page link">Privacy Policy</a></li>
+              </ul>
+            </div>
+            <div class="cs_footer_widget cs_contact_widget">
+              <h3 class="cs_footer_widget_title cs_fs_24 cs_semibold cs_mb_29">Lets Try out</h3>
+              <div class="cs_cta_btns">
+                <a href="#" aria-label="Download App button" class="cs_cta_btn cs_heading_bg cs_white_color">
+                  <span class="cs_btn_icon">
+                    <svg width="26" height="32" viewBox="0 0 26 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M21.7383 16.7637C21.7383 16.9004 21.5332 20.9336 25.9766 23.0527C25.1562 25.582 22.2852 31.1875 18.9355 31.1875C17.0215 31.1875 15.9277 29.957 13.7402 29.957C11.4844 29.957 10.2539 31.1875 8.54492 31.1875C5.26367 31.3242 2.11914 25.1719 1.23047 22.6426C0.546875 20.7285 0.273438 18.8828 0.273438 17.1055C0.273438 11.0215 4.30664 8.08203 8.13477 8.01367C9.98047 8.01367 12.3047 9.3125 13.3301 9.3125C14.2871 9.3125 16.9531 7.74023 19.4141 7.94531C21.9434 8.15039 23.8574 9.10742 25.1562 10.9531C22.9004 12.3887 21.7383 14.2344 21.7383 16.7637ZM17.9102 5.55273C16.543 7.125 14.9023 8.01367 13.125 7.87695C12.9883 6.03125 13.6719 4.32227 14.9023 2.95508C15.9961 1.72461 17.9102 0.699219 19.5508 0.5625C19.5508 1.31445 19.7559 3.36523 17.9102 5.55273Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <div class="cs_btn_text">
+                    <p class="cs_fs_15 mb-0">Get it on</p>
+                    <p class="cs_fs_18 cs_medium mb-0">App Store</p>
+                  </div>
+                </a>
+                <a href="#" aria-label="Download App button" class="cs_cta_btn cs_white_bg cs_heading_color">
+                  <span class="cs_btn_icon">
+                    <svg width="28" height="31" viewBox="0 0 28 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M18.043 14.5195L21.5586 11.0039L5.09375 1.51172L18.043 14.5195ZM1.75391 0.75C0.992188 1.16016 0.464844 1.92188 0.464844 2.85938V28.6992C0.464844 29.6367 0.992188 30.3984 1.75391 30.75L16.7539 15.75L1.75391 0.75ZM26.6562 13.9922L23.1992 12L19.332 15.75L23.1992 19.5586L26.7148 17.5664C27.7695 16.7461 27.7695 14.8125 26.6562 13.9922ZM5.09375 29.9883L21.5586 20.5547L18.043 17.0391L5.09375 29.9883Z" fill="currentColor"/>
+                    </svg>
+                  </span>
+                  <div class="cs_btn_text">
+                    <p class="cs_fs_15 mb-0">Get it on</p>
+                    <p class="cs_fs_18 cs_medium mb-0">Google Play</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cs_footer_bottom cs_accent_bg">
+        <div class="container">
+          <div class="cs_footer_text cs_white_color text-center">Copyright &copy; <span class="cs_getting_year"></span> Saaso theme by Themeservices</div>
+        </div>
+      </div>
+    </footer>
+    <!-- End Footer Section -->
+    <!-- Start Scroll Up Button -->
+    <button type="button" aria-label="Scroll to top button" class="cs_scrollup cs_purple_bg cs_white_color cs_radius_100">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0 10L1.7625 11.7625L8.75 4.7875V20H11.25V4.7875L18.225 11.775L20 10L10 0L0 10Z" fill="currentColor" />
+      </svg>
+    </button>
+    <!-- End Scroll Up Button -->
+    <!-- Script -->
+    <script src="{% static 'assets2/js/jquery.min.js' %}"></script>
+    <script src="{% static 'assets2/js/wow.min.js' %}"></script>
+    <script src="{% static 'assets2/js/jquery.slick.min.js' %}"></script>
+    <script src="{% static 'assets2/js/isotope.pkgd.min.js' %}"></script>
+    <script src="{% static 'assets2/js/odometer.js' %}"></script>
+    <script src="{% static 'assets2/js/main.js' %}"></script>
+  </body>
+</html>
