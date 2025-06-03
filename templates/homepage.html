@@ -1,0 +1,345 @@
+<!DOCTYPE html><html lang="en"><head>
+    {% load static %}
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>GFU. GRAND</title>
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/images/tg_image_3682980900.png' %}" rel="icon">
+  <link href="{% static 'assets/images/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/css/bootstrap.min_1.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/aos.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/css/swiper-bundle.min.css' %}" rel="stylesheet">
+
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <link href="{% static 'assets/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{% static 'assets/css/main.css' %}" rel="stylesheet">
+
+  <style>
+    .btn-get-started {
+        background-color: #4DC680;
+        margin: 5px;
+        display: inline-block;
+        color: white;
+        padding: 8px 20px;
+        border: none;
+        border-radius: 10px;
+        text-decoration: none;
+    }
+    .my-btn-color {
+      display: inline-block;
+      border-radius: 15px;
+      padding: 5px 15px;
+      color: #4DC680;
+      border: 1px solid #4DC680;
+    }
+
+    .my-btn-color:hover {
+      background-color: #4DC680;
+      color: white;
+    }
+    .my-text {
+      color: black;
+    }
+    .my-text:hover {
+      color: #4DC680;
+    }
+  </style>
+
+
+</head>
+
+<body class="index-page">
+
+  <header id="header" class="header d-flex align-items-center sticky-top">
+    <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+      <a href="/" class="logo d-flex align-items-center me-auto">
+        <h1 class="sitename text-warning">GRAND</h1>
+      </a>
+
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="/" class="active">Bosh sahifa</a></li>
+          <li><a href="/#about">Ma'lumotlar</a></li>
+          <li><a href="/#contact">Aloqa</a></li>
+
+          
+          <a class="btn-getstarted" href="/users/login/">Kirish</a>
+          
+
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+    </div>
+  </header>
+
+
+
+  <main>
+    
+
+
+    
+    <section id="hero" class="hero section">
+
+      <div class="container">
+        <div class="row gy-4">
+          <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center" data-aos="fade-up">
+            <h1>Ta’lim grantlarini qayta taqsimlash uchun platforma.</h1>
+            <p>Hemis orqali kirib grant uchun ariza topshiring!</p>
+            <div class="d-flex">
+              
+                <a href="/student/login/" class="btn-get-started">Hemis orqali kirish</a>
+              
+              <a href="https://www.youtube.com/watch?v=dmy9i7GcbTE" class="glightbox btn-watch-video d-flex align-items-center"><i class="bi bi-play-circle"></i><span>Qo'lanma</span></a>
+            </div>
+            
+          </div>
+          <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-out" data-aos-delay="100">
+            <img src="{% static 'assets/images/hero-img.png' %}" class="img-fluid animated" alt="">
+          </div>
+        </div>
+      </div>
+
+    </section><!-- /Hero Section -->
+
+    <section id="stats" class="stats section">
+
+      <div class="container" data-aos="fade-up" data-aos-delay="10">
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="1980" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Universitet talabalar</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="20" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Kelib tushgan arizalar</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Tasdiqlangan arizalar</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+          <div class="col-lg-3 col-md-6">
+            <div class="stats-item text-center w-100 h-100">
+              <span data-purecounter-start="0" data-purecounter-end="0" data-purecounter-duration="1" class="purecounter"></span>
+              <p>Rad etilgan arizalar</p>
+            </div>
+          </div><!-- End Stats Item -->
+
+        </div>
+
+      </div>
+
+    </section><!-- /Stats Section -->
+
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Ma'lumotlar<br></span>
+        <h2>Ma'lumotlar</h2>
+        <p>Grant uchun ariza topshirish shartlari va qo'llanma.</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+
+        <div class="row gy-4">
+          <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="100">
+            <img src="{% static 'assets/images/about.png' %}" class="img-fluid" alt="">
+            <a href="https://www.youtube.com/watch?v=dmy9i7GcbTE" class="glightbox pulsating-play-btn"></a>
+          </div>
+          <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="200">
+            <h3>Universitetda talabalarga grantlarni taqdim etish va qayta taqsimlash tartibi to'g'risida </h3>
+            <p class="fst-italic">
+               Universitet tomonidan tabaqalashtirilgan tarzda 
+               Grandlarni qayta taqsimlash uchun ariza topshirishga 
+               qo'yilgan talablar:
+            </p>
+            <ul>
+              <li><i class="bi bi-check2-all"></i> <span>O'zbekiston Respublikasi fuqorosi</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>GPA ko'rsatkichi 3.5 dan baland bo'lishi</span></li>
+              <li><i class="bi bi-check2-all"></i> <span>Ijtimoiy faol talaba</span></li>
+            </ul>
+            <p>
+              Ariza topshirish uchun <a href="/student/login/">Hemis</a> orqali kirib, ariza qoldiring.
+              Qulaylik yaratish maqsadida ariza ma'lumotlaringiz avtomatik ravishda to'ldiriladi.
+              Arizangizni yuborganingizdan so'ng, mutaxassislar tomonidan ko'rib chiqiladi. 
+              Yakuniy natijalarni <a href="https://uzgeouniver.uz/uz//">Universitetning rasmiy veb-saytida</a> e'lon qilinadi. 
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /About Section -->
+
+    
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <span>Aloqa ma'lumotlari</span>
+        <h2>Aloqa </h2>
+        <p>Murojaatingizni qoldiring mutahasislarimiz siz bilan aloqaga chiqishadi!</p>
+      </div><!-- End Section Title -->
+
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+            <div class="info-wrap">
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+                <i class="bi bi-geo-alt flex-shrink-0"></i>
+                <div>
+                  <h3>Bizning manzil</h3>
+                  <p>Manzil: Samarqand sh, Spitamen shoh ko‘chasi, 166-uy</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-telephone flex-shrink-0"></i>
+                <div>
+                  <h3>Bizga qo'ng'iroq qiling</h3>
+                  <p>+998 (71) 209-11-69</p>
+                </div>
+              </div><!-- End Info Item -->
+
+              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+                <i class="bi bi-envelope flex-shrink-0"></i>
+                <div>
+                  <h3>Pochta</h3>
+                  <p>info@uzgeouniver.uz</p>
+                </div>
+              </div><!-- End Info Item -->
+
+            </div>
+          </div>
+          <div class="col-lg-6 gy-4">
+              <div class="info-wrap">
+              
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3382.981656782843!2d69.33783159382342!3d41.34067446325612!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38aef466b1d2a92d%3A0x1fa3714a97987c89!2sGeologiya%20fanlari%20universiteti!5e1!3m2!1suz!2s!4v1747722029027!5m2!1suz!2s" width="580" height="260" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Contact Section --> 
+
+
+  </main>
+
+
+
+  <footer id="footer" class="footer mt-50">
+    
+    <div class="container footer-top">
+      <div class="row gy-4">
+        <div class="col-lg-4 col-md-6 footer-about">
+          <a href="index.html" class="d-flex align-items-center">
+            <span class="sitename">GFU</span>
+          </a>
+          <div class="footer-contact pt-3">
+            <p><strong>Manzil:</strong> Toshkent sh. Mirzo Ulug'bek tumani, </p>
+            <p>Olimlar ko'chasi, 64-uy</p>
+            <p class="mt-3"><strong>Telefon raqam:</strong> <span>+1 5589 55488 55</span></p>
+            <p><strong>Email:</strong> <span>info@uzgeouniver.uz</span></p>
+          </div>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Foydali havolalar</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz/">Bizning Universitet</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz/pages/uni-haqida">Biz haqimizda</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz//">Xizmatlar</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://uzgeouniver.uz/uz//">Tuzilma</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-2 col-md-3 footer-links">
+          <h4>Interaktiv xizmatlar</h4>
+          <ul>
+            <li><i class="bi bi-chevron-right"></i> <a href="#">Elektron kutubxona</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://murojaat.uzgeouniver.uz/">Virtual qabul</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://vacancy.uzgeouniver.uz/uz/">Vakansiyalar</a></li>
+            <li><i class="bi bi-chevron-right"></i> <a href="https://pf.bimm.uz/">Portfolio</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-4 col-md-12">
+          <h4>Bizning ijtimoiy tarmoqlar</h4>
+          
+          <div class="social-links d-flex">
+            <a href="https://www.youtube.com/channel/UCHbNGfH1JzavP51xMmNN_eQ?view_as=subscriber"><i class="bi bi-youtube"></i></a>
+            <a href="https://www.facebook.com/geoscience.official"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/geologiya_fanlari_universitet/"><i class="bi bi-instagram"></i></a>
+            <a href="https://t.me/gfu_rasmiy_kanali"><i class="bi bi-telegram"></i></a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="container copyright text-center mt-4">
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">GFU</strong> <span>Raqamli ta'lim texnologiyalari markazi</span></p>
+      
+  </div></footer>
+  
+  <a href="#">
+
+  <!-- Scroll Top -->
+  </a><a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Preloader -->
+  <div id="preloader"></div>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/js/validate.js' %}"></script>
+  <script src="{% static 'assets/js/aos.js' %}"></script>
+  <script src="{% static 'assets/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/js/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/js/imagesloaded.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/js/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/js/swiper-bundle.min.js' %}"></script>
+
+  <!-- Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  <!-- Bootstrap JS (CDN) -->
+  <script src="{% static 'assets/js/bootstrap.bundle.min_1.js' %}"></script>
+
+
+</body></html>
