@@ -1,59 +1,48 @@
-from django.views import View
-from django.http import JsonResponse
+# yourapp/views.py
+from rest_framework.response import Response
+from rest_framework.views import APIView
+from rest_framework import status
+from django.shortcuts import redirect
 
 from .client import oAuth2Client
-from django.conf import settings
-from django.shortcuts import render
+from core.settings import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTHORIZE_URL, TOKEN_URL, RESOURCE_OWNER_URL
 
-def home(request):
-    return render(request, 'homepage.html')
-    # return render(request, 'index.html')
+# class OAuthAuthorizationView(APIView):
+#     def get(self, request, *args, **kwargs):
+#         client = oAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTHORIZE_URL, TOKEN_URL, RESOURCE_OWNER_URL)
+#         return redirect(client.get_authorization_url())
+    
 
-
-
-class AuthLoginView(View):
-    def get(self, request):
+class OAuthAuthorizationView(APIView):
+    def get(self, request, *args, **kwargs):
         client = oAuth2Client(
-            client_id = settings.CLIENT_ID,
-            client_secret = settings.CLIENT_SECRET,
-            redirect_uri = settings.REDIRECT_URI,
-            authorize_url = settings.AUTHORIZE_URL,
-            token_url = settings.ACCESS_TOKEN_URL,
-            resource_owner_url = settings.RESOURCE_OWNER_URL
+            client_id=CLIENT_ID,
+            client_secret=CLIENT_SECRET,
+            redirect_uri=REDIRECT_URI,
+            authorize_url=AUTHORIZE_URL,
+            token_url=TOKEN_URL,
+            resource_owner_url=RESOURCE_OWNER_URL
         )
         authorization_url = client.get_authorization_url()
+        print(authorization_url, "SALOM")
+        return Response(
+            {
+                'authorization_url': authorization_url
+            },
+            status=status.HTTP_200_OK)
 
-        return JsonResponse({'authorization_url': authorization_url})
 
+class OAuthCallbackView(APIView):
+    def get(self, request, *args, **kwargs):
+        code = request.query_params.get("code")
+        if not code:
+            return Response({"error": "Missing authorization code"}, status=400)
 
-class AuthCallbackView(View):
-    def get(self, request):
+        client = oAuth2Client(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI, AUTHORIZE_URL, TOKEN_URL, RESOURCE_OWNER_URL)
+        token_data = client.get_access_token(code)
 
-        code = request.GET.get('code')
-        if code is None: return JsonResponse({'error': 'code is missing!'})
+        if 'access_token' not in token_data:
+            return Response({"error": "Failed to retrieve access token", "details": token_data}, status=401)
 
-        client = oAuth2Client(
-            client_id = settings.CLIENT_ID,
-            client_secret = settings.CLIENT_SECRET,
-            redirect_uri = settings.REDIRECT_URI,
-            authorize_url = settings.AUTHORIZE_URL,
-            token_url = settings.ACCESS_TOKEN_URL,
-            resource_owner_url = settings.RESOURCE_OWNER_URL
-        )
-        access_token_response = client.get_access_token(code)
-
-        full_info = {}
-        if 'access_token' in access_token_response:
-            access_token = access_token_response['access_token']
-            user_details = client.get_user_details(access_token)
-            full_info['details'] = user_details
-            full_info['token'] = access_token
-            return JsonResponse(full_info)
-        else:
-            return JsonResponse(
-                {
-                    'status': False,
-                    'error': 'Failed to obtain access token'
-                },
-                status=400
-            )
+        user_info = client.get_user_details(token_data['access_token'])
+        return Response({"user_info": user_info, "access_token": token_data['access_token']})
