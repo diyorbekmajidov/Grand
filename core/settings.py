@@ -4,15 +4,13 @@ from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(os.path.join(BASE_DIR, '.env'))
-
-CLIENT_ID = os.getenv("SECRET_KEY")
-CLIENT_SECRET = os.getenv("CLIENT_SECRET")
-REDIRECT_URI = os.getenv("REDIRECT_URI")
-AUTHORIZE_URL = os.getenv("AUTHORIZE_URL")
-ACCESS_TOKEN_URL = os.getenv("ACCESS_TOKEN_URL")
-TOKEN_URL = os.getenv('TOKEN_URL')
-RESOURCE_OWNER_URL = os.getenv("RESOURCE_OWNER_URL")
+load_dotenv()
+CLIENT_ID = os.getenv('CLIENT_ID')
+CLIENT_SECRET = os.getenv('CLIENT_SECRET')
+REDIRECT_URI = os.getenv('REDIRECT_URI')
+AUTHORIZE_URL = os.getenv('AUTHORIZE_URL')
+ACCESS_TOKEN_URL = os.getenv('ACCESS_TOKEN_URL')
+RESOURCE_OWNER_URL = os.getenv('RESOURCE_OWNER_URL')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
