@@ -1,8 +1,16 @@
 from django.views import View
 from django.http import JsonResponse
-
+from django.shortcuts import render, redirect
 from .client import oAuth2Client
 from django.conf import settings
+from django.http import HttpResponseRedirect
+
+
+def landing_page(request):
+    return render(request, 'homepage.html')
+
+def home(request):
+    return render(request, 'index.html')
 
 
 class AuthLoginView(View):
@@ -16,9 +24,8 @@ class AuthLoginView(View):
             resource_owner_url = settings.RESOURCE_OWNER_URL
         )
         authorization_url = client.get_authorization_url()
-        print(authorization_url)
 
-        return JsonResponse({'authorization_url': authorization_url})
+        return HttpResponseRedirect(authorization_url)
 
 
 class AuthCallbackView(View):
@@ -43,7 +50,13 @@ class AuthCallbackView(View):
             user_details = client.get_user_details(access_token)
             full_info['details'] = user_details
             full_info['token'] = access_token
-            return JsonResponse(full_info)
+            student_gpa = user_details['data']['avg_gpa']
+            if float(student_gpa)<3.50:
+                return JsonResponse({
+                    'status':False,
+                    'error':'Failed to gpa is not enough'
+                })
+            return redirect('/home/')
         else:
             return JsonResponse(
                 {
