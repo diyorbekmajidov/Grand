@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Tooplate">
-    <title>{% block title %}Mini Finance Dashboard{% endblock %}</title>
+    <title>{% block title %}Grand Dashboard{% endblock %}</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,9 +20,9 @@
 <body>
     <header class="navbar sticky-top flex-md-nowrap">
             <div class="col-md-3 col-lg-3 me-0 px-3 fs-6">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="">
                     <i class="bi-box"></i>
-                    Mini Finance
+                    Grand
                 </a>
             </div>
 
@@ -100,43 +100,24 @@
                             <div class="container">
                                 <div class="row">
                                     <div class="col-lg-4 col-md-4 col-4">
-                                        <a class="dropdown-item text-center" href="#">
-                                            <img src="images/social/search.png" class="profile-image img-fluid" alt="">
+                                        <a class="dropdown-item text-center" href="https://www.youtube.com/@uzfiuz">
+                                            <img src="{% static 'assets/images/social/search.png' %}" class="profile-image img-fluid" alt="">
                                             <span class="d-block">Google</span>
                                         </a>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-4">
-                                        <a class="dropdown-item text-center" href="#">
-                                            <img src="images/social/spotify.png" class="profile-image img-fluid" alt="">
-                                            <span class="d-block">Spotify</span>
-                                        </a>
-                                    </div>
 
                                     <div class="col-lg-4 col-md-4 col-4">
-                                        <a class="dropdown-item text-center" href="#">
-                                            <img src="images/social/telegram.png" class="profile-image img-fluid" alt="">
+                                        <a class="dropdown-item text-center" href="https://t.me/UzFi_uz">
+                                            <img src="{% static 'assets/images/social/telegram.png' %}" class="profile-image img-fluid" alt="">
                                             <span class="d-block">Telegram</span>
                                         </a>
                                     </div>
 
-                                    <div class="col-lg-4 col-md-4 col-4">
-                                        <a class="dropdown-item text-center" href="#">
-                                            <img src="images/social/snapchat.png" class="profile-image img-fluid" alt="">
-                                            <span class="d-block">Snapchat</span>
-                                        </a>
-                                    </div>
 
                                     <div class="col-lg-4 col-md-4 col-4">
-                                        <a class="dropdown-item text-center" href="#">
-                                            <img src="images/social/tiktok.png" class="profile-image img-fluid" alt="">
-                                            <span class="d-block">Tiktok</span>
-                                        </a>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-4 col-4">
-                                        <a class="dropdown-item text-center" href="#">
-                                            <img src="images/social/youtube.png" class="profile-image img-fluid" alt="">
+                                        <a class="dropdown-item text-center" href="https://uzfi.uz/uz/">
+                                            <img src="{% static 'assets/images/social/youtube.png' %}" class="profile-image img-fluid" alt="">
                                             <span class="d-block">Youtube</span>
                                         </a>
                                     </div>
@@ -147,16 +128,16 @@
 
                     <div class="dropdown px-3">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="images/medium-shot-happy-man-smiling.jpg" class="profile-image img-fluid" alt="">
+                            <img src="{{ student_header.student_imeg.url }}" class="profile-image img-fluid" alt="">
                         </a>
                         <ul class="dropdown-menu bg-white shadow">
                             <li>
                                 <div class="dropdown-menu-profile-thumb d-flex">
-                                    <img src="images/medium-shot-happy-man-smiling.jpg" class="profile-image img-fluid me-3" alt="">
+                                    <img src="{{ student_header.student_imeg.url }}" class="profile-image img-fluid me-3" alt="">
 
                                     <div class="d-flex flex-column">
-                                        <small>Thomas</small>
-                                        <a href="#">thomas@site.com</a>
+                                        <small>{{ student_header.student_name }}</small>
+                                        <a href="#">{{ student_header.email }}</a>
                                     </div>
                                 </div>
                             </li>
@@ -176,14 +157,14 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="help-center.html">
+                                <a class="dropdown-item" href="/contact/">
                                     <i class="bi-question-circle me-2"></i>
-                                    Help
+                                    Bog'lanish
                                 </a>
                             </li>
 
                             <li class="border-top mt-3 pt-2 mx-4">
-                                <a class="dropdown-item ms-0 me-0" href="#">
+                                <a class="dropdown-item ms-0 me-0" href="{% url 'logout' %}">
                                     <i class="bi-box-arrow-left me-2"></i>
                                     Logout
                                 </a>
@@ -200,16 +181,16 @@
                     <div class="position-sticky py-4 px-3 sidebar-sticky">
                         <ul class="nav flex-column h-100">
                             <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="index.html">
+                                <a class="nav-link active" aria-current="page" href="/home/">
                                     <i class="bi-house-fill me-2"></i>
-                                    Overview
+                                    Bosh sahifa
                                 </a>
                             </li>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="wallet.html">
                                     <i class="bi-wallet me-2"></i>
-                                    My Wallet
+                                    Topshiriqlar
                                 </a>
                             </li>
 
@@ -220,28 +201,28 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="setting.html">
                                     <i class="bi-gear me-2"></i>
                                     Settings
                                 </a>
-                            </li>
+                            </li> -->
 
                             <li class="nav-item">
-                                <a class="nav-link" href="help-center.html">
+                                <a class="nav-link" href="/contact/">
                                     <i class="bi-question-circle me-2"></i>
-                                    Help Center
+                                    Bog'lanish
                                 </a>
                             </li>
 
                             <li class="nav-item featured-box mt-lg-5 mt-4 mb-4">
                                 <img src="images/credit-card.png" class="img-fluid" alt="">
 
-                                <a class="btn custom-btn" href="#">Upgrade</a>
+                                <a class="btn custom-btn text-dark" href="#">Ariza yuborish</a>
                             </li>
 
                             <li class="nav-item border-top mt-auto pt-2">
-                                <a class="nav-link" href="#">
+                                <a class="dropdown-item ms-0 me-0" href="{% url 'logout' %}">
                                     <i class="bi-box-arrow-left me-2"></i>
                                     Logout
                                 </a>

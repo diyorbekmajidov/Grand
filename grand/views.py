@@ -15,7 +15,25 @@ def landing_page(request):
     return render(request, 'homepage.html')
 
 def home(request):
-    return render(request, 'index.html')
+    student_hemis_id = cache.get('student_hemis_id')
+    if not student_hemis_id:
+        return redirect('/auth/')
+    student = Student.objects.get(student_id_number=student_hemis_id)
+    return render(request, 'index.html', context={'student':student})
+
+
+def student_settings(request):
+    pass
+
+def logout_view(request):
+    cache.delete('student_hemis_id')
+    cache.delete('hemis_access_token')
+
+
+    return redirect('/auth/')
+
+def contact(request):
+    return render(request, 'help-center.html')
 
 def download_image_from_url(url):
     response = requests.get(url)
@@ -65,6 +83,7 @@ class AuthCallbackView(View):
             full_info['token'] = access_token
             student_gpa = user_details['data']['avg_gpa']
             cache.set('hemis_access_token', access_token, timeout=1800)
+            cache.set('student_hemis_id', user_details['student_id_number'], timeout=1800)
 
             if float(student_gpa)<3.50:
                 return JsonResponse({
