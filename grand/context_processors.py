@@ -4,8 +4,10 @@ from django.shortcuts import redirect
 
 def header_context(request):
     student_hemis_id = cache.get('student_hemis_id')
-    if not cache.get('student_hemis_id'):
-        return redirect('/auth/')
-    student = Student.objects.get(student_id_number=student_hemis_id)
-
-    return {'student_header':student}
+    if not student_hemis_id:
+        return {}  # Bo‘sh dict qaytaring, redirect bu yerda ishlamaydi
+    try:
+        student = Student.objects.get(student_id_number=student_hemis_id)
+    except Student.DoesNotExist:
+        return {}
+    return {'student_header': student}
