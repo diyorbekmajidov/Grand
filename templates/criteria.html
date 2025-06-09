@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% load i18n %}
+{% block content %}
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="title-group mb-3">
+                <h1 class="h2 mb-0">Mezonlar</h1>
+            </div>
+
+            <div class="row my-4">
+                <div class="col-lg-12 col-12">
+                    <div class="custom-block bg-white">
+                        <h5 class="mb-4">Ushbu Grand da mavjud mezonlar jadvali.</h5>
+
+                        <div class="table-responsive">
+                            <table class="account-table table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nomi</th>
+                                        <th scope="col">Ball</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for criteria in criterias %}
+                                        <tr>
+                                            <td>{{ forloop.counter }}</td>
+                                            <td>
+                                                <a href="{% url 'upload_file' criteria.id %}">
+                                                    {{ criteria.title }}
+                                                </a>
+                                            </td>
+                                            <td>{{ criteria.score }}</td>
+                                        </tr>
+                                    {% empty %}
+                                        <tr>
+                                            <td colspan="5">Hech qanday mezon topilmadi.</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Pagination joyi agar kerak bo‘lsa -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+{% endblock %}

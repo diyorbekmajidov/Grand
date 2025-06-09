@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="bg-white shadow-sm rounded p-4">
+        <h5 class="text-primary mb-3">
+            <i class="bi bi-clipboard-check"></i>
+            Band: {{ criteria.name }}
+        </h5>
+        <p class="text-muted">
+            Har semester yakuni bo‘yicha talabalardan olinadigan anonim so‘rovnomalar (Fidbek) o‘tkazish bilan baholanadi
+        </p>
+        <ul>
+            <li>Umumiy ball: <span class="text-danger fw-bold">{{ criteria.total_score }}</span></li>
+        </ul>
+    </div>
+
+    {% if already_uploaded %}
+        <div class="alert alert-info mt-4" role="alert">
+            <i class="bi bi-check2-circle me-2"></i>
+            Siz bu band uchun allaqachon fayl yuklagansiz.
+            <br>
+            <strong>Fayl:</strong>
+            <a href="{{ already_uploaded.uploaded_file.url }}" target="_blank" class="link-primary">
+                {{ already_uploaded.uploaded_file.name }}
+            </a>
+        </div>
+    {% endif %}
+
+    {% if form.non_field_errors %}
+        <div class="alert alert-danger mt-4" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            {{ form.non_field_errors }}
+        </div>
+    {% endif %}
+
+    <div class="bg-light rounded mt-4 p-4">
+        <h5 class="fw-bold mb-3">📎 Hisobotni Yuklash</h5>
+        <p class="text-muted">
+            Yuklash uchun fayl tanlang. Maksimal ruxsat etilgan hajm: <strong>5MB</strong>.
+        </p>
+
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="id_uploaded_file" class="form-label fw-semibold">Faylni tanlang:</label>
+                <input type="file" name="uploaded_file" class="form-control {% if form.uploaded_file.errors %}is-invalid{% endif %}" id="id_uploaded_file">
+                {% if form.uploaded_file.errors %}
+                    <div class="invalid-feedback">
+                        {{ form.uploaded_file.errors|striptags }}
+                    </div>
+                {% endif %}
+            </div>
+
+            <button type="submit" class="btn btn-primary px-4" {% if already_uploaded %}disabled{% endif %}>
+                <i class="bi bi-upload"></i> Hisobotni Yuborish
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}
