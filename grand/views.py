@@ -33,6 +33,9 @@ def logout_view(request):
     return redirect('/auth/')
 
 def contact(request):
+    student_hemis_id = cache.get('student_hemis_id')
+    if not student_hemis_id:
+        return redirect('/auth/')
     return render(request, 'help-center.html')
 
 def download_image_from_url(url):
