@@ -32,7 +32,7 @@ def logout_view(request):
     cache.delete('hemis_access_token')
     logout(request)
 
-    return redirect('/auth/')
+    return redirect('/')
 
 def criteria(request):
     if request.method == 'GET':
