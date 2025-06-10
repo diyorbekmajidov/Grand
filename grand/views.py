@@ -11,7 +11,7 @@ import requests, os
 from django.core.files.base import ContentFile
 from urllib.parse import urlparse
 from django.contrib import messages
-
+from django.contrib.auth import logout
 
 def landing_page(request):
     return render(request, 'homepage.html')
@@ -30,7 +30,7 @@ def student_settings(request):
 def logout_view(request):
     cache.delete('student_hemis_id')
     cache.delete('hemis_access_token')
-
+    logout(request)
 
     return redirect('/auth/')
 
