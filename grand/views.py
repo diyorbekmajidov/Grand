@@ -5,11 +5,12 @@ from .client import oAuth2Client
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.core.cache import cache
-from .models import Student, Criteria
-from .forms import StudentFilesForm
+from .models import Student, Criteria, StudentFiles
+from .forms import StudentFilesForm, StudentFileForm
 import requests, os
 from django.core.files.base import ContentFile
 from urllib.parse import urlparse
+from django.contrib import messages
 
 
 def landing_page(request):
@@ -65,8 +66,39 @@ def upload_file(request, criteria_id):
     return render(request, 'upload_file.html', {'form': form, 'criteria': criteria})
 
 
-def profile(request):
-    return render(request, 'profile.html')
+def student_profile(request, student_id):
+    student_hemis_id = cache.get('student_hemis_id')
+    
+    if not student_hemis_id:
+        return redirect('/auth/')
+    
+    # student_id argumentini ishlating, lekin siz cache dan ham olayapsiz,
+    # agar kerak bo'lsa, student_id ni tekshiring
+    student = get_object_or_404(Student, student_id_number=student_id)
+    
+    files = StudentFiles.objects.filter(student=student)
+    if request.method == 'POST':
+        file_id = request.POST.get('file_id')
+        action = request.POST.get('action')
+
+        file_obj = get_object_or_404(StudentFiles, id=file_id, student=student)
+
+        if action == 'edit':
+            form = StudentFileForm(request.POST, request.FILES, instance=file_obj)
+            if form.is_valid():
+                form.save()
+                return redirect('profile', student_id=student.student_id_number)
+
+        elif action == 'delete':
+            file_obj.delete()
+            return redirect('profile', student_id=student.student_id_number)
+
+    return render(request, 'profile.html', {
+        'student': student,
+        'files': files,
+        'form': StudentFileForm(),
+    })
+
 
 def contact(request):
     student_hemis_id = cache.get('student_hemis_id')
@@ -123,14 +155,13 @@ class AuthCallbackView(View):
             full_info['details'] = user_details
             full_info['token'] = access_token
             student_gpa = user_details['data']['avg_gpa']
+            
+            messages.error(request, "Sizning GPA balingiz yetarli emas. Kamida 3.5 bo‘lishi kerak.")
+            if float(student_gpa)<3.50:
+                return redirect('/')
+            
             cache.set('hemis_access_token', access_token, timeout=1800)
             cache.set('student_hemis_id', user_details['student_id_number'], timeout=1800)
-
-            if float(student_gpa)<3.50:
-                return JsonResponse({
-                    'status':False,
-                    'error':'Failed to gpa is not enough'
-                })
             
             if not Student.objects.filter(student_id_number=user_details["student_id_number"]).exists():
                 student = Student.objects.create(

@@ -8,6 +8,8 @@
     <meta name="author" content="Tooplate">
     <title>{% block title %}Grand Dashboard{% endblock %}</title>
 
+    
+
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -146,10 +148,12 @@
                             </li>
 
                             <li>
-                                <a class="dropdown-item" href="{% url 'profile' %}">
-                                    <i class="bi-person me-2"></i>
-                                    Hisobotlarim
-                                </a>
+                                <!-- {% if student_id %} -->
+                                    <a class="nav-link" href="{% url 'profile' student_id=student_id %}">
+                                        <i class="bi-person me-2"></i>
+                                        Hisobotlarim
+                                    </a>
+                                <!-- {% endif %} -->
                             </li>
 
                             <li>
@@ -177,6 +181,7 @@
                 </div>
             </div>
     </header>
+    
 
     <div class="container-fluid">
       <div class="row">
@@ -198,10 +203,12 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'profile' %}">
-                                    <i class="bi-person me-2"></i>
-                                    Hisobotlarim
-                                </a>
+                                {% if student_id %}
+                                    <a class="nav-link" href="{% url 'profile' student_id=student_id %}">
+                                        <i class="bi-person me-2"></i>
+                                        Hisobotlarim
+                                    </a>
+                                {% endif %}
                             </li>
 
                             <!-- <li class="nav-item">
