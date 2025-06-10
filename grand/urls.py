@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AuthLoginView, AuthCallbackView, home, landing_page, contact, profile, logout_view,criteria,upload_file
+from .views import AuthLoginView, AuthCallbackView, home, landing_page, contact, student_profile, logout_view,criteria,upload_file
 
 
 urlpatterns = [
@@ -8,7 +8,7 @@ urlpatterns = [
     path('contact/', contact, name='contact'),
     path('logout/', logout_view, name='logout'),
     path('criteria/', criteria, name='criteria'),
-    path('profile/', profile, name='profile'),
+    path('profile/<int:student_id>/', student_profile, name='profile'),
     path('upload/<int:criteria_id>/', upload_file, name='upload_file'),
 
     path('auth/', AuthLoginView.as_view(), name='oauth_login'),
