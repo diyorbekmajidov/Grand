@@ -1,11 +1,12 @@
 from django.views import View
 from django.http import JsonResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .client import oAuth2Client
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.core.cache import cache
-from .models import Student
+from .models import Student, Criteria
+from .forms import StudentFilesForm
 import requests, os
 from django.core.files.base import ContentFile
 from urllib.parse import urlparse
@@ -32,11 +33,48 @@ def logout_view(request):
 
     return redirect('/auth/')
 
+def criteria(request):
+    if request.method == 'GET':
+        student_hemis_id = cache.get('student_hemis_id')
+        if not student_hemis_id:
+            return redirect('/auth/')
+        criterias = Criteria.objects.all()
+        return render(request, 'criteria.html', {'criterias':criterias})
+    return render(request, 'criteria.htmlt')
+
+def upload_file(request, criteria_id):
+    criteria = get_object_or_404(Criteria, pk=criteria_id)
+    student_hemis_id = cache.get('student_hemis_id')
+    if not student_hemis_id:
+        return redirect('/auth/')
+    student = Student.objects.get(student_id_number = student_hemis_id)
+    
+
+    if request.method == 'POST':
+        form = StudentFilesForm(request.POST or None, request.FILES or None, student=student, criteria=criteria)
+
+        if form.is_valid():
+            student_file = form.save(commit=False)
+            student_file.criteria = criteria
+            student_file.student = student
+            student_file.save()
+            return redirect('/criteria/')
+    else:
+        form = StudentFilesForm()
+
+    return render(request, 'upload_file.html', {'form': form, 'criteria': criteria})
+
+
+def profile(request):
+    return render(request, 'profile.html')
+
 def contact(request):
     student_hemis_id = cache.get('student_hemis_id')
     if not student_hemis_id:
         return redirect('/auth/')
     return render(request, 'help-center.html')
+
+
 
 def download_image_from_url(url):
     response = requests.get(url)
