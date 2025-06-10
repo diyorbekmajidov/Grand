@@ -156,8 +156,9 @@ class AuthCallbackView(View):
             full_info['token'] = access_token
             student_gpa = user_details['data']['avg_gpa']
             
-            messages.error(request, "Sizning GPA balingiz yetarli emas. Kamida 3.5 bo‘lishi kerak.")
+            
             if float(student_gpa)<3.50:
+                messages.error(request, "Sizning GPA balingiz yetarli emas. Kamida 3.5 bo‘lishi kerak.")
                 return redirect('/')
             
             cache.set('hemis_access_token', access_token, timeout=1800)
