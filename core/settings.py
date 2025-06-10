@@ -19,7 +19,7 @@ RESOURCE_OWNER_URL = os.getenv('RESOURCE_OWNER_URL')
 SECRET_KEY = 'django-insecure-m3-7+gzf2=2m(j&u4k+vgjxop)b092vfwa%p-hlaz(-mzt2co!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
