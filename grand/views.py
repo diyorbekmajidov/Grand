@@ -150,6 +150,8 @@ class AuthCallbackView(View):
 
         full_info = {}
         if 'access_token' in access_token_response:
+            cache_s = cache.get('hemis_access_token')
+            print(cache_s)
             access_token = access_token_response['access_token']
             user_details = client.get_user_details(access_token)
             full_info['details'] = user_details
