@@ -52,7 +52,11 @@ MIDDLEWARE = [
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOW_CREDENTIALS = True
-CSRF_TRUSTED_ORIGINS = ["https://grant.uzfi.uz", "http://localhost:8000"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://grant.uzfi.uz", 
+    "https://www.grant.uzfi.uz",
+    "http://localhost:8000",
+                        ]
 SESSION_COOKIE_DOMAIN = "grand.uzfi.uz"
 CSRF_COOKIE_DOMAIN = "grand.uzfi.uz"
 CSRF_COOKIE_SECURE = True
