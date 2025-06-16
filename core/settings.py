@@ -57,8 +57,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://www.grant.uzfi.uz",
     "http://localhost:8000",
                         ]
-SESSION_COOKIE_DOMAIN = "grand.uzfi.uz"
-CSRF_COOKIE_DOMAIN = "grand.uzfi.uz"
+SESSION_COOKIE_DOMAIN = "grant.uzfi.uz"
+CSRF_COOKIE_DOMAIN = "grant.uzfi.uz"
 CSRF_COOKIE_SECURE = True
 ROOT_URLCONF = 'core.urls'
 
