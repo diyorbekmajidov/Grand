@@ -15,8 +15,12 @@ class StudentAdmin(admin.ModelAdmin):
         if isinstance(groups, list) and groups:
             return groups[0].get('name', '-')
         return '-'
+    
+class StudentFilesAdmin(admin.ModelAdmin):
+    list_display = ('student', 'criteria','task_score',)
+    search_fields = ('student__student_name', 'criteria__title',)
 
 admin.site.register(Student, StudentAdmin)
 admin.site.register(Criteria)
-admin.site.register(StudentFiles)
+admin.site.register(StudentFiles, StudentFilesAdmin)
 admin.site.register(Supervisor)
