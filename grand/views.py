@@ -194,3 +194,6 @@ class AuthCallbackView(View):
                 },
                 status=400
             )
+        
+def error_404_view(request, exception):
+    return render(request, '404.html')
