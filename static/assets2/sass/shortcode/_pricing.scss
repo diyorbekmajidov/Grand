@@ -1,0 +1,434 @@
+/*--------------------------------------------------------------
+  16. Pricing
+----------------------------------------------------------------*/
+.cs_pricing_table.cs_style_1 {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 48px 40px 40px;
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+
+  .cs_pricing_table_heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .cs_price {
+    line-height: 1em;
+
+    small {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--body-color);
+      margin-left: 2px;
+    }
+  }
+
+  .cs_separator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(26, 26, 46, 0.00) 0%, #1A1A2E 50%, rgba(26, 26, 46, 0.00) 100%);
+  }
+
+  .cs_pricing_feature_list {
+    li {
+      padding-left: 24px;
+      position: relative;
+
+      &:not(:last-child) {
+        margin-bottom: 16px;
+      }
+    }
+
+    .cs_feature_icon {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .cs_btn.cs_style_1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 20px 20px 21px;
+    background-color: var(--white-color);
+    border-radius: 100px;
+    margin-top: auto;
+  }
+
+  .cs_pricing_badge {
+    width: 100%;
+    max-width: 198px;
+    padding: 7px 20px;
+    border-radius: 50px;
+    left: 50%;
+    top: -10px;
+    transform: translateX(-50%);
+  }
+
+  .cs_pricing_table_shape {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
+  .monthlyPrice {
+    display: none;
+  }
+
+  >* {
+    position: relative;
+    z-index: 1;
+  }
+
+  &.cs_active {
+    padding-top: 76px;
+    border-color: transparent;
+    background-color: transparent;
+
+    .cs_btn.cs_style_1 {
+      background-color: var(--accent-color);
+      color: var(--white-color);
+    }
+  }
+
+  &:hover {
+    background-color: var(--theme-color-1);
+    border-color: var(--theme-color-1);
+
+    &.cs_active {
+      background-color: transparent;
+      border-color: transparent;
+    }
+
+    .cs_btn.cs_style_1 {
+      background-color: var(--accent-color);
+      color: var(--white-color);
+    }
+  }
+
+  &.cs_type_1 {
+    height: 100%;
+    border: 0;
+    padding: 32px 40px 40px;
+    background-color: #0F3A37;
+
+    .cs_pricing_badge {
+      border-radius: 0;
+      max-width: 150px;
+      padding: 7px 16px 7px 32px;
+      top: 40px;
+      right: 0;
+      left: initial;
+      transform: translateX(0);
+
+      &::before {
+        content: "";
+        border-top: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 20px solid transparent;
+        border-left: 20px solid #0F3A37;
+        position: absolute;
+        top: 0;
+        left: -1px;
+      }
+    }
+
+    .cs_separator {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 50%, rgba(255, 255, 255, 0.00) 100%);
+    }
+
+    small {
+      color: var(--white-color);
+    }
+
+    .cs_btn.cs_style_1 {
+      background: rgba(255, 255, 255, 0.10);
+      color: var(--white-color);
+    }
+
+    &.cs_active,
+    &:hover {
+      background-color: #0F3A37;
+
+      .cs_btn.cs_style_1 {
+        background-color: var(--theme-color-4);
+        color: var(--heading-color);
+      }
+    }
+  }
+
+  @media (max-width:1399px) {
+    &.cs_type_1 {
+      padding: 32px 20px 40px;
+    }
+
+    .cs_pricing_badge {
+      max-width: 160px;
+    }
+
+    .cs_fs_74 {
+      font-size: 64px;
+    }
+  }
+
+  @media (max-width:1199px) {
+    padding: 48px 15px 40px;
+
+    &.cs_active {
+      padding-top: 60px;
+      background-color: var(--theme-color-1);
+
+      &:hover {
+        background-color: var(--theme-color-1);
+      }
+    }
+
+    .cs_pricing_table_shape {
+      display: none;
+    }
+
+    .cs_fs_74 {
+      font-size: 50px;
+    }
+  }
+}
+
+.cs_pricing_table.cs_style_2 {
+  padding: 52px 40px 60px;
+  border: 1px solid var(--border-color);
+  transition: all 0.4s ease;
+
+  .yearlyPrice {
+    display: none;
+  }
+
+  .cs_pricing_table_heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .cs_separator {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(26, 26, 46, 0.00) 0%, #1A1A2E 51.5%, rgba(26, 26, 46, 0.00) 100%);
+  }
+
+  .cs_feature_list_wrapper {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .cs_pricing_feature_list {
+    max-width: 220px;
+
+    li {
+      position: relative;
+      padding-left: 33px;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .cs_feature_icon {
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 1px;
+  }
+
+  .cs_btn.cs_style_1 {
+    width: 100%;
+    padding: 20px 30px;
+    border-radius: 100px;
+    color: var(--heading-color);
+    border: 1px solid var(--border-color);
+  }
+
+  .cs_pricing_badge {
+    padding: 7px 16px 7px 32px;
+    position: absolute;
+    top: 49px;
+    left: 48%;
+    transform: translateX(-48%);
+
+    &::before {
+      content: "";
+      border-top: 20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 20px solid var(--accent-color);
+      position: absolute;
+      top: 0;
+      left: -1px;
+    }
+  }
+
+  .cs_feature_title,
+  .cs_plan_title,
+  .cs_price,
+  .cs_feature_icon,
+  .cs_separator {
+    transition: all 0.3s ease;
+  }
+
+  &:hover,
+  &.active {
+    background-color: var(--accent-color);
+
+    .cs_feature_title,
+    .cs_plan_title,
+    .cs_price {
+      color: var(--white-color);
+    }
+
+    .cs_feature_icon {
+      color: var(--theme-color-4);
+    }
+
+    .cs_separator {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 51.5%, rgba(255, 255, 255, 0.00) 100%);
+    }
+
+    .cs_btn.cs_style_1 {
+      background-color: var(--theme-color-4);
+      border-color: var(--theme-color-4);
+    }
+  }
+
+  @media (max-width:1399px) {
+    padding: 52px 20px 60px;
+
+    .cs_fs_74 {
+      font-size: 64px;
+    }
+
+    .cs_pricing_badge {
+      left: 52%;
+      transform: translateX(-52%);
+    }
+  }
+
+  @media (max-width:1199px) {
+    .cs_pricing_badge {
+      padding: 7px 16px;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width:575px) {
+    .cs_fs_74 {
+      font-size: 52px;
+    }
+  }
+
+  @media (max-width:440px) {
+    .cs_pricing_table_heading {
+      flex-direction: column;
+    }
+  }
+}
+
+/*-------------------------------------
+ Pricing Controll
+---------------------------------------*/
+.cs_pricing_control {
+  padding: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 100px;
+  gap: 8px;
+
+  li {
+
+    a {
+      display: inline-block;
+      border-radius: 100px;
+      padding: 6px 16px;
+      color: var(--body-color);
+    }
+
+    &.active a,
+    &:hover a {
+      background-color: var(--accent-color);
+      color: var(--white-color);
+    }
+  }
+
+  .cs_offer_info {
+    top: 50%;
+    left: calc(100% + 10px);
+    transform: translateY(-50%);
+    text-wrap: nowrap;
+  }
+
+  &.cs_type_1 {
+    background: linear-gradient(90deg, #7341F1 0%, #2EB67D 100%);
+    border: 0;
+
+    &::before {
+      content: "";
+      width: calc(100% - 2px);
+      height: calc(100% - 2px);
+      border-radius: inherit;
+      background-color: var(--accent-color);
+      opacity: 0.8;
+      position: absolute;
+      left: 1px;
+      top: 1px;
+    }
+
+    li {
+      position: relative;
+      z-index: 1;
+
+      a {
+        color: var(--white-color);
+      }
+
+      &.active a,
+      &:hover a {
+        background-color: var(--theme-color-4);
+        color: var(--heading-color);
+      }
+    }
+
+    .cs_offer_info {
+      right: calc(100% + 15px);
+      left: initial;
+    }
+  }
+
+  @media (max-width:440px) {
+    .cs_offer_info {
+      top: calc(100% + 10px);
+      left: 70%;
+      transform: translateY(0);
+      font-size: 16px;
+    }
+  }
+}
