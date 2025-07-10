@@ -1,0 +1,267 @@
+/*--------------------------------------------------------------
+  13. Hero
+----------------------------------------------------------------*/
+.cs_hero.cs_style_1 {
+  padding: 0 15px;
+
+  .cs_hero_content {
+    width: 100%;
+    max-width: 1830px;
+    height: 100%;
+    margin: 45px auto 0;
+    padding: 290px 0px 230px;
+  }
+
+  .cs_hero_thumbnail {
+    img {
+      width: 100%;
+    }
+  }
+
+  .cs_hero_text {
+    width: 100%;
+    max-width: 744px;
+  }
+
+  .cs_hero_subtitle {
+    display: inline-flex;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--white-color);
+  }
+
+  .cs_btns_group {
+    display: flex;
+    align-items: center;
+    gap: 20px 40px;
+    flex-wrap: wrap;
+  }
+
+  .cs_client_info_wrapper {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    img {
+      width: 51%;
+    }
+
+    h3 {
+      margin-bottom: -3px;
+    }
+  }
+
+  @media (min-width:1400px) {
+    padding: 0 45px;
+
+    .container {
+      max-width: 1510px;
+    }
+
+    .cs_hero_thumbnail {
+      width: 39vw;
+      position: absolute;
+      top: 140px;
+      right: 3%;
+      z-index: 1;
+    }
+  }
+
+  @media (max-width:1399px) {
+    .cs_hero_content {
+      padding: 190px 0px 120px;
+    }
+
+    .cs_hero_thumbnail {
+      transform: translateX(40px);
+    }
+  }
+
+  @media (max-width:1199px) {
+    .cs_hero_content {
+      margin: 80px auto 0;
+      padding: 120px 0px;
+      border-radius: 30px;
+    }
+
+    .cs_hero_thumbnail {
+      transform: translateX(0);
+    }
+
+    .cs_btns_group {
+      gap: 20px;
+    }
+
+    .cs_client_info_wrapper {
+      gap: 10px;
+    }
+
+    br {
+      display: none;
+    }
+  }
+
+  @media (max-width:991px) {
+    .cs_hero_content {
+      padding: 80px 0px;
+    }
+
+    .cs_hero_thumbnail {
+      position: initial;
+    }
+  }
+
+  @media (max-width:575px) {
+    .cs_client_info_wrapper {
+
+      img {
+        width: 49%;
+      }
+    }
+  }
+}
+
+.cs_hero.cs_style_2 {
+  padding: 264px 0 510px;
+
+  .cs_hero_subtitle {
+    display: inline-flex;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--heading-color);
+  }
+
+  .cs_btns_group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .cs_hero_text * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .cs_hero_shape_1 {
+    top: 20px;
+    left: 2%;
+    z-index: 0;
+  }
+
+  .cs_hero_shape_2 {
+    top: 16%;
+    right: 5%;
+    z-index: 0;
+    animation: rotation-y 10s linear infinite;
+  }
+
+  @media (max-width:991px) {
+    padding: 190px 0 300px;
+
+    .cs_hero_shape_1,
+    .cs_hero_shape_2 {
+      display: none;
+    }
+  }
+
+  @media (max-width:767px) {
+    padding: 190px 0 180px;
+  }
+}
+
+.cs_hero.cs_style_3 {
+  padding: 104px 0 0;
+
+  &::before {
+    content: "";
+    width: 100%;
+    height: 30%;
+    background-color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .cs_hero_thumbnail {
+    width: 48vw;
+    position: absolute;
+    right: 0;
+    top: 22%;
+  }
+
+  .cs_hero_content {
+    padding: 248px 0;
+  }
+
+  .cs_hero_text {
+    max-width: 684px;
+  }
+
+  .cs_has_shape {
+    display: inline-block;
+    padding: 10px 15px;
+
+    img {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  .cs_hero_subtitle {
+    display: inline-flex;
+    gap: 10px;
+    padding: 6px 10px;
+    border-radius: 100px;
+    border: 1px solid var(--heading-color);
+  }
+
+  .cs_btns_group {
+    display: flex;
+    align-items: center;
+    gap: 30px 40px;
+    flex-wrap: wrap;
+  }
+
+  .cs_hero_shape_1 {
+    left: 55%;
+    top: 6%;
+    animation: rotation-y 10s linear infinite;
+  }
+
+  .cs_hero_shape_2 {
+    left: 5%;
+    bottom: 4%;
+    animation: rotation-y 10s linear infinite;
+  }
+
+  @media (min-width:1600px) {
+    .cs_hero_text {
+      transform: translateX(-100px);
+    }
+  }
+
+  @media (max-width:991px) {
+    .cs_hero_content {
+      padding: 80px 0;
+    }
+
+    .cs_hero_thumbnail {
+      position: initial;
+      width: 100%;
+    }
+
+    .cs_hero_text {
+      max-width: 100%;
+    }
+
+    .cs_hero_shape_1,
+    .cs_hero_shape_2 {
+      display: none;
+    }
+  }
+}
