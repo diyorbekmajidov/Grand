@@ -1,9 +1,10 @@
+from django.http import HttpRequest
 from .models import Student
 from django.core.cache import cache
 from django.shortcuts import redirect
 
-def header_context(request):
-    student_hemis_id = cache.get('student_hemis_id')
+def header_context(request:HttpRequest):
+    student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
         return {}  # Bo‘sh dict qaytaring, redirect bu yerda ishlamaydi
     try:
@@ -14,10 +15,10 @@ def header_context(request):
 
 
 
-def student_processor(request):
+def student_processor(request:HttpRequest):
     student_id = None
     student = None
-    student_hemis_id = cache.get('student_hemis_id')
+    student_hemis_id = request.COOKIES.get('student_hemis_id')
     if student_hemis_id:
         try:
             student = Student.objects.get(student_id_number=student_hemis_id)

@@ -1,5 +1,5 @@
 from django.views import View
-from django.http import JsonResponse
+from django.http import HttpRequest, JsonResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .client import oAuth2Client
 from django.conf import settings
@@ -16,8 +16,8 @@ from django.contrib.auth import logout
 def landing_page(request):
     return render(request, 'homepage.html')
 
-def home(request):
-    student_hemis_id = cache.get('student_hemis_id')
+def home(request:HttpRequest):
+    student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
         return redirect('/auth/')
     student = Student.objects.get(student_id_number=student_hemis_id)
@@ -27,25 +27,25 @@ def home(request):
 def student_settings(request):
     pass
 
-def logout_view(request):
-    cache.delete('student_hemis_id')
-    cache.delete('hemis_access_token')
-    logout(request)
+def logout_view(request:HttpRequest):
+    response = redirect('/')
+    response.delete_cookie('student_hemis_id')
+    response.delete_cookie('hemis_access_token')
 
-    return redirect('/')
+    return response
 
-def criteria(request):
+def criteria(request:HttpRequest):
     if request.method == 'GET':
-        student_hemis_id = cache.get('student_hemis_id')
+        student_hemis_id = request.COOKIES.get('student_hemis_id')
         if not student_hemis_id:
             return redirect('/auth/')
         criterias = Criteria.objects.all()
         return render(request, 'criteria.html', {'criterias':criterias})
     return render(request, 'criteria.htmlt')
 
-def upload_file(request, criteria_id):
+def upload_file(request:HttpRequest, criteria_id):
     criteria = get_object_or_404(Criteria, pk=criteria_id)
-    student_hemis_id = cache.get('student_hemis_id')
+    student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
         return redirect('/auth/')
     student = Student.objects.get(student_id_number = student_hemis_id)
@@ -66,8 +66,8 @@ def upload_file(request, criteria_id):
     return render(request, 'upload_file.html', {'form': form, 'criteria': criteria})
 
 
-def student_profile(request, student_id):
-    student_hemis_id = cache.get('student_hemis_id')
+def student_profile(request:HttpRequest, student_id):
+    student_hemis_id = request.COOKIES.get('student_hemis_id')
     
     if not student_hemis_id:
         return redirect('/auth/')
@@ -100,8 +100,8 @@ def student_profile(request, student_id):
     })
 
 
-def contact(request):
-    student_hemis_id = cache.get('student_hemis_id')
+def contact(request:HttpRequest):
+    student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
         return redirect('/auth/')
     return render(request, 'help-center.html')
@@ -163,8 +163,10 @@ class AuthCallbackView(View):
                 messages.error(request, "Sizning GPA balingiz yetarli emas. Kamida 3.5 bo‘lishi kerak.")
                 return redirect('/')
             
-            cache.set('hemis_access_token', access_token, timeout=1800)
-            cache.set('student_hemis_id', user_details['student_id_number'], timeout=1800)
+            # cache.set('hemis_access_token', access_token, timeout=1800)
+            # cache.set('student_hemis_id', user_details['student_id_number'], timeout=1800)
+
+            
             
             if not Student.objects.filter(student_id_number=user_details["student_id_number"]).exists():
                 student = Student.objects.create(
@@ -185,7 +187,10 @@ class AuthCallbackView(View):
                 if image_file:
                     student.student_imeg.save(image_file.name, image_file, save=False)
                     student.save()
-            return redirect('/home/')
+            response = redirect('/home/') 
+            response.set_cookie('student_hemis_id', user_details['student_id_number'], max_age=1800)    
+            response.set_cookie('hemis_access_token', access_token, max_age=1800)     
+            return response
         else:
             return JsonResponse(
                 {

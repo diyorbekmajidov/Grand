@@ -19,7 +19,7 @@ RESOURCE_OWNER_URL = os.getenv('RESOURCE_OWNER_URL')
 SECRET_KEY = 'django-insecure-m3-7+gzf2=2m(j&u4k+vgjxop)b092vfwa%p-hlaz(-mzt2co!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -62,15 +62,6 @@ CSRF_COOKIE_DOMAIN = "grant.uzfi.uz"
 CSRF_COOKIE_SECURE = True
 ROOT_URLCONF = 'core.urls'
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",  # Redisdagi 1-database ishlatiladi
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
-    }
-}
 
 
 TEMPLATES = [
