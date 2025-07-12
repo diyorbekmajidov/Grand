@@ -18,23 +18,6 @@
 <link href="{% static 'assets/css/tooplate-mini-finance.css' %}" rel="stylesheet">
 <link href="{% static 'assets/css/apexcharts.css' %}" rel="stylesheet">
 
-<!-- Success Modal -->
-<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content rounded-4 shadow">
-      <div class="modal-header">
-        <h5 class="modal-title" id="successModalLabel">✅ Muvaffaqiyatli</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Yopish"></button>
-      </div>
-      <div class="modal-body text-center fs-5">
-        Sizning arizangiz qabul qilindi!
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-success" data-bs-dismiss="modal">Yopish</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 <body>
@@ -196,7 +179,6 @@
                 </div>
             </div>
     </header>
-    
 
     <div class="container-fluid">
       <div class="row">
@@ -241,11 +223,8 @@
                             </li>
 
                             <li class="nav-item featured-box mt-lg-5 mt-4 mb-4">
-                                <a class="btn custom-btn text-dark" href="#" data-bs-toggle="modal" data-bs-target="#successModal">
-                                    Ariza yuborish
-                                </a>
+                                <a id="submit-btn" class="btn custom-btn text-dark" href="#">Ariza yuborish</a>
                             </li>
-
 
                             <li class="nav-item border-top mt-auto pt-2">
                                 <a class="dropdown-item ms-0 me-0" href="{% url 'logout' %}">
@@ -283,10 +262,14 @@
     <script src="{% static 'assets/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'assets/js/apexcharts.min.js' %}"></script>
     <script src="{% static 'assets/js/custom.js' %}"></script>
-    <!-- Bootstrap JS (Popper bilan birga) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("submit-btn").addEventListener("click", function(event) {
+            event.preventDefault();  // formani yuborishni to'xtatadi
+            alert("✅ Sizning arizangiz qabul qilindi!");
+        });
+    </script>
 
-
+    
 
     <script type="text/javascript">
             var options = {
