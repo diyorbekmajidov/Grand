@@ -1,13 +1,26 @@
 from django.contrib import admin
 from import_export.admin import ExportMixin
-from import_export import resources
+from import_export import resources, fields
 from .models import Student, Criteria, StudentFiles, Supervisor
 import json
 
 # Resource klass
 class StudentResources(resources.ModelResource):
+    group_name = fields.Field(column_name="groups_name")
+    def dehydrate_group_name(self, student):
+        try:
+            groups = json.loads(student.groups)
+        except Exception:
+            groups = student.groups  
+
+        if isinstance(groups, list) and groups:
+            return groups[0].get('name', '-')
+        return '-'
+    
+
     class Meta:
         model = Student
+        fields = ('id', 'passport_number', 'student_name', 'group_name', 'paymentForm', 'studentStatus', 'avg_gpa')
 
 # BIRLASHGAN admin klass
 @admin.register(Student)
