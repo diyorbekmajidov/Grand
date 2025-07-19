@@ -20,7 +20,7 @@ class StudentResources(resources.ModelResource):
 
     class Meta:
         model = Student
-        fields = ('id', 'passport_number', 'student_name', 'group_name', 'paymentForm', 'studentStatus', 'avg_gpa')
+        fields = ('id', 'passport_number', "level", 'phone_number','student_id_number','faculty' ,'student_name', 'group_name', 'paymentForm', 'studentStatus', 'avg_gpa')
 
 # BIRLASHGAN admin klass
 @admin.register(Student)
