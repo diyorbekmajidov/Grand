@@ -1,5 +1,5 @@
 from django.views import View
-from django.http import HttpRequest, JsonResponse
+from django.http import HttpRequest, JsonResponse, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from .client import oAuth2Client
 from django.conf import settings
@@ -11,8 +11,10 @@ import requests, os
 from django.core.files.base import ContentFile
 from urllib.parse import urlparse
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import logout, authenticate, login
+import datetime
 
+from .serializers import StudentSerializer,StudentFilesSerializer
 def landing_page(request):
     return render(request, 'homepage.html')
 
@@ -22,6 +24,68 @@ def home(request:HttpRequest):
         return redirect('/auth/')
     student = Student.objects.get(student_id_number=student_hemis_id)
     return render(request, 'index.html', context={'student':student})
+
+def faculty_list(request):
+    faculties = [
+        "Tabiiy fanlar",
+        "Aniq va amaliy fanlar",
+        "Maktabgacha va Boshlang'ich ta'lim",
+        "Pedagogika va jismoniy madaniyat",
+        "Tillar"
+    ]
+    return render(request, 'faculty_list.html', {'faculties': faculties})
+
+def supervisor_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(username=username, password=password)
+
+        if user is not None:
+            login(request, user)   
+            return redirect('faculty_list') 
+        else:
+            messages.error(request, "Invalid username or password.")
+
+    return render(request, 'login.html')
+
+def faculty_detail(request, name):
+    students = Student.objects.filter(faculty=name)
+    
+    serializer = StudentSerializer(students, many=True)
+    return render(request, 'faculty-students.html', {'students': serializer.data, 'faculty_name': name})
+
+
+def student_files(request, pk):
+    try:
+        student = Student.objects.get(student_id_number=pk)
+        serializer_student = StudentSerializer(student)
+        print(serializer_student.data)
+    except Student.DoesNotExist:
+        return HttpResponse("Student topilmadi", status=404)
+
+    student_fl = StudentFiles.objects.filter(student = student)
+    serializer = StudentFilesSerializer(student_fl, many=True)
+
+    return render(request, 'student_files.html', {"students_fl":serializer.data, "student":serializer_student.data})
+
+
+def score_file(request, pk):
+    file = get_object_or_404(StudentFiles, pk=pk)
+    student = Student.objects.get(id=file.student_id)
+    serializer = StudentSerializer(student)
+    
+    if request.method == 'POST':
+        task_score = int(request.POST.get('task_score'))
+        comment = request.POST.get('supervisor_comment', '')
+        file.task_score = task_score
+        file.supervisor_comment = comment
+        file.is_scored = True
+        file.supervisor = request.user.supervisor  # Assuming supervisor is logged in user
+        file.save()
+        return redirect('student_files', pk=file.student.student_id_number)
+    
+    return render(request, 'score_file.html', {'student_file': file, 'student':serializer.data})
 
 
 def student_settings(request):

@@ -27,7 +27,7 @@ class StudentResources(resources.ModelResource):
 class StudentAdmin(ExportMixin, admin.ModelAdmin):  # asosiy class
     resource_class = StudentResources
 
-    list_display = ('passport_number', 'student_name', 'group_name', 'paymentForm','studentStatus','avg_gpa',)
+    list_display = ('passport_number', 'student_name', 'faculty', 'group_name', 'paymentForm','studentStatus','avg_gpa',)
     search_fields = ('passport_number', 'student_name',)
 
     def group_name(self, obj):

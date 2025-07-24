@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ faculty_name }} fakulteti talabalar ro'yxati</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <!-- Back button -->
+        <div class="mb-4">
+            <a href="{% url 'faculty_list' %}" class="btn btn-secondary">
+                &larr; Fakultetlar ro'yxatiga qaytish
+            </a>
+        </div>
+
+        <h3 class="mb-4">{{ faculty_name }} fakulteti talabalar ro'yxati</h3>
+
+        {% if students %}
+            <table class="table table-bordered">
+                <thead class="table-light">
+                    <tr>
+                        <th>#</th>
+                        <th>F.I.Sh</th>
+                        <th>Guruh</th>
+                        <th>Telefon</th>
+                        <th>Hemis id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for student in students %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>
+                            <a class="faculty-link text-decoration-none text-primary" href="{% url 'student_files' student.student_id_number %}">
+                                {{ student.student_name }}
+                            </a>
+                        </td>
+                        <td>{{ student.group_display }}</td>
+                        <td>{{ student.phone_number }}</td>
+                        <td>{{ student.student_id_number}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="alert alert-warning">Bu fakultetda hozircha talabalar mavjud emas.</div>
+        {% endif %}
+        
+    </div>
+    <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; 2025. Barcha huquqlar himoyalangan</span>
+                </div>
+            </div>
+        </footer>
+</body>
+</html>

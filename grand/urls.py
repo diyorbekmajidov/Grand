@@ -1,9 +1,15 @@
 from django.urls import path
-from .views import AuthLoginView, AuthCallbackView, home, landing_page, contact, student_profile, logout_view,criteria,upload_file
+from .views import AuthLoginView, AuthCallbackView, faculty_list, home,supervisor_login, faculty_detail, student_files, score_file, landing_page, contact, student_profile, logout_view,criteria,upload_file
 
 
 urlpatterns = [
     path('', landing_page),
+    path('supervisor/login/', supervisor_login, name='supervisor-login'),
+    path('faculty-fiels/', faculty_list, name="faculty_list"),
+    path('faculty/<str:name>/', faculty_detail, name='faculty_detail'),
+    path('student-files/<int:pk>/', student_files, name="student_files"),
+    path('score-file/<int:pk>/', score_file, name='score_file'),
+
     path('home/', home, name='home'),
     path('contact/', contact, name='contact'),
     path('logout/', logout_view, name='logout'),

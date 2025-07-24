@@ -57,6 +57,7 @@ class StudentFiles(models.Model):
     uploaded_file = models.FileField(upload_to='student_uploads/')
     task_score = models.IntegerField(blank=True, null=True)
     initial_score = models.IntegerField(blank=True, null=True)
+    is_scored = models.BooleanField(default=False, verbose_name="Baholandi")
     supervisor = models.ForeignKey(Supervisor, on_delete=models.SET_NULL, null=True, blank=True)
     supervisor_comment = models.TextField(blank=True, null=True)
 
@@ -64,14 +65,21 @@ class StudentFiles(models.Model):
     date_update = models.DateTimeField(auto_now=True)
 
     class Meta:
-        unique_together = ('student', 'criteria')  # <-- bu yerda kombinatsiya unikal bo‘ladi
+        unique_together = ('student', 'criteria')
 
     def save(self, *args, **kwargs):
-        if self.initial_score is None and self.criteria:
-            self.initial_score = self.criteria.score
-            self.task_score = self.criteria.score
+        if self.pk:  # update holatida
+            old = StudentFiles.objects.get(pk=self.pk)
+            if old.is_scored:
+                if self.task_score != old.task_score or self.initial_score != old.initial_score:
+                    raise ValidationError("Baholangan faylga qayta baho qo‘yish mumkin emas.")
+        else:
+            if self.initial_score is None and self.criteria:
+                self.initial_score = self.criteria.score
+                self.task_score = self.criteria.score
+
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return f'{self.student} - {self.criteria}'
+        return f"{self.student}-{self.criteria}"
 
