@@ -80,6 +80,11 @@ class StudentFiles(models.Model):
 
         super().save(*args, **kwargs)
 
+    def score_ratio_display(self):
+        if self.is_scored and self.initial_score and self.task_score is not None:
+            return f"{self.task_score}/{self.initial_score}"
+        return "Baholanmagan"
+
     def __str__(self):
         return f"{self.student}-{self.criteria}"
 

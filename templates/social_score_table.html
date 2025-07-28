@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Ijtimoiy faollik bo‘yicha baholash</title>
+    <style>
+        body { font-family: DejaVu Sans, sans-serif; font-size: 12px; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid black; padding: 6px; text-align: center; }
+        h3 { text-align: center; margin-bottom: 20px; }
+    table {
+        font-size: 11px;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 4px;
+        border: 1px solid #000;
+        text-align: center;
+    }
+</style>
+
+</head>
+<body>
+    <div style="text-align: center; margin-bottom: 20px;">
+        <img src="/static/assets/images/logo.png" alt="Logo" style="width: 100px; height: auto;">
+        <h2>Talabalar Ijtimoiy Faolligi Baholash Jadvali</h2>
+    </div>
+    <h3> O'zbekiston Respublikasi Prezidentining 2024-yi1 24-maydagi PF-8l-son Farmoni, Vazirlar Mahkamasining 2025-yil 10-martdagi 149-sonli qarorinng Oliy taʼlim tashkilotlarida taʼlim grantiga talabgorlarning ijtimoiy faolligini aniqlash boʻyicha baholash mezonlari asosida  O'zbekiston-Finlandiya pedagogika instituti Tillar fakulteti talabalarning   ijtimoiy faolligi qaydnomasi</h3>
+    <p style="text-align:center; font-weight:bold;">QAYDNOMASI</p>
+
+    <table style="border-collapse: collapse; width: 100%; font-size: 12px;">
+        {% load custom_filters %}
+
+    <thead>
+        <tr>
+            <th style="border: 1px solid #000;">T/r</th>
+            <th style="border: 1px solid #000;">F.I.Sh</th>
+            <th style="border: 1px solid #000;">Yo‘nalish</th>
+            <th style="border: 1px solid #000;">Guruh</th>
+            {% for i in range_criteria %}
+                <th style="border: 1px solid #000;">{{ i.title }}</th>
+            {% endfor %}
+            <th style="border: 1px solid #000;">Jami</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% regroup files by student_id as student_list %}
+        {% for student in student_list %}
+        <tr>
+            <td style="border: 1px solid #000;">{{ forloop.counter }}</td>
+            <td style="border: 1px solid #000;">{{ student.list.0.student_name }}</td>
+            <td style="border: 1px solid #000;">{{ student.list.0.faculty_name }}</td>
+            <td style="border: 1px solid #000;">{{ student.list.0.group_name }}</td>
+            {% for i in student.list %}
+                <td style="border: 1px solid #000;">{{ i.task_score }}</td>
+            {% endfor %}
+            <td style="border: 1px solid #000;">
+                {{ student.list|sum_attribute:"task_score" }}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>

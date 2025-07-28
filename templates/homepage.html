@@ -81,13 +81,35 @@
     <!-- Start Hero Section -->
     <section class="cs_hero cs_style_1">
        {% if messages %}
-      {% for message in messages %}
-          <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
-          {{ message }}
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-          </div>
-      {% endfor %}
-    {% endif %}
+        <div id="custom-alert" style="
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #333;
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 9999;
+            font-size: 16px;
+            opacity: 0.95;
+            transition: opacity 0.5s ease;
+        ">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+        </div>
+        <script>
+          setTimeout(function() {
+            const alert = document.getElementById('custom-alert');
+            if (alert) {
+              alert.style.opacity = '0';
+              setTimeout(() => alert.remove(), 500);  // butunlay DOMdan olib tashlaydi
+            }
+          }, 3000);  // 3 sekundda yopiladi
+        </script>
+      {% endif %}
+
       <div class="cs_hero_content cs_accent_bg cs_bg_filed cs_radius_50 position-relative" data-src="{% static 'assets2/img/hero-bg-1.svg' %}">
         <div class="container">
           <div class="row cs_gap_y_40 align-items-center">
