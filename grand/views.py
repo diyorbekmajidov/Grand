@@ -14,6 +14,15 @@ from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
 import datetime
 
+from django.template.loader import render_to_string
+from weasyprint import HTML
+from .models import StudentFiles
+import tempfile
+
+date_string = "2025-07-25"
+date_object = datetime.datetime.strptime(date_string, "%Y-%m-%d")
+current_datetime = datetime.datetime.now()
+
 from .serializers import StudentSerializer,StudentFilesSerializer
 def landing_page(request):
     return render(request, 'homepage.html')
@@ -87,7 +96,6 @@ def score_file(request, pk):
     
     return render(request, 'score_file.html', {'student_file': file, 'student':serializer.data})
 
-
 def student_settings(request):
     pass
 
@@ -109,6 +117,7 @@ def criteria(request:HttpRequest):
 
 def upload_file(request:HttpRequest, criteria_id):
     criteria = get_object_or_404(Criteria, pk=criteria_id)
+    print(criteria)
     student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
         return redirect('/auth/')
@@ -128,7 +137,6 @@ def upload_file(request:HttpRequest, criteria_id):
         form = StudentFilesForm()
 
     return render(request, 'upload_file.html', {'form': form, 'criteria': criteria})
-
 
 def student_profile(request:HttpRequest, student_id):
     student_hemis_id = request.COOKIES.get('student_hemis_id')
@@ -163,14 +171,50 @@ def student_profile(request:HttpRequest, student_id):
         'form': StudentFileForm(),
     })
 
+def download_student_score_pdf(request, pk):
+    student_file = get_object_or_404(StudentFiles, pk=pk)
+
+    html_string = render_to_string('pdf_template.html', {'student_file': student_file})
+
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = f'attachment; filename="{student_file.student}_score.pdf"'
+
+    with tempfile.NamedTemporaryFile(delete=True) as output:
+        HTML(string=html_string).write_pdf(target=output.name)
+        output.seek(0)
+        response.write(output.read())
+
+    return response
+
+def export_social_activity_pdf(request, pk):
+    student_file = StudentFiles.objects.filter(student=pk)
+    serializer = StudentFilesSerializer(student_file, many=True)
+    criteria = Criteria.objects.all()
+
+    context = {
+        "files": serializer.data,
+        "range_criteria": criteria,
+    }
+
+    html_string = render_to_string("social_score_table.html", context)
+
+    base_url = os.path.join(settings.BASE_DIR, 'static')
+
+    html_string = render_to_string("social_score_table.html", context)
+
+    # PDF yaratish
+    pdf_file = HTML(string=html_string, base_url=base_url).write_pdf()
+
+    response = HttpResponse(pdf_file, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="social_activity_scores.pdf"'
+    return response
+
 
 def contact(request:HttpRequest):
     student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
         return redirect('/auth/')
     return render(request, 'help-center.html')
-
-
 
 def download_image_from_url(url):
     response = requests.get(url)
@@ -179,7 +223,6 @@ def download_image_from_url(url):
         filename = os.path.basename(parsed_url.path)
         return ContentFile(response.content, name=filename)
     return None
-
 
 class AuthLoginView(View):
     def get(self, request):
@@ -194,7 +237,6 @@ class AuthLoginView(View):
         authorization_url = client.get_authorization_url()
 
         return HttpResponseRedirect(authorization_url)
-
 
 class AuthCallbackView(View):
     def get(self, request):
@@ -214,23 +256,26 @@ class AuthCallbackView(View):
 
         full_info = {}
         if 'access_token' in access_token_response:
-            cache_s = cache.get('hemis_access_token')
-            print(cache_s)
             access_token = access_token_response['access_token']
             user_details = client.get_user_details(access_token)
             full_info['details'] = user_details
             full_info['token'] = access_token
             student_gpa = user_details['data']['avg_gpa']
-            
-            
-            if float(student_gpa)<3.50:
+            student_id = user_details['data']['student_id_number']
+
+            student = Student.objects.filter(student_id_number=student_id)
+
+            if not student.exists() and date_object<current_datetime:
+                messages.error(request, "Tizimda roʻyxatdan oʻtish tugallandi.")
+                return redirect('/')
+        
+            if float(student_gpa)<3.50 :
                 messages.error(request, "Sizning GPA balingiz yetarli emas. Kamida 3.5 bo‘lishi kerak.")
                 return redirect('/')
+                
             
             # cache.set('hemis_access_token', access_token, timeout=1800)
             # cache.set('student_hemis_id', user_details['student_id_number'], timeout=1800)
-
-            
             
             if not Student.objects.filter(student_id_number=user_details["student_id_number"]).exists():
                 student = Student.objects.create(

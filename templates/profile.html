@@ -3,37 +3,53 @@
 {% block content %}
 <div class="container mt-5">
     <h3 class="mb-4">Siz yuklagan fayllar</h3>
+    <a href="{% url 'export_social_pdf' student.id %}" class="btn btn-primary">
+        Bahoni PDF ko‘chirish
+    </a>
 
     {% for file in files %}
         <div class="card mb-3">
             <div class="card-body">
-                <h5 class="card-title">{{ file.criteria.name }}</h5>
+                <h5 class="card-title">{{ file.criteria }}</h5>
                 <p class="card-text">Yuklangan sana: {{ file.date_created|date:"Y-m-d H:i" }}</p>
+                <p class="card-text">Quyilgan baho: {{ file.score_ratio_display }}</p>
+                <!-- <a href="{% url 'export_social_pdf' file.id %}" class="btn btn-primary">
+    Bahoni PDF ko‘chirish
+</a> -->
+
 
                 <a href="{{ file.uploaded_file.url }}" class="btn btn-outline-info btn-sm" download>
                     <i class="bi bi-file-earmark-arrow-down"></i> Yuklab olish
                 </a>
 
-                <form method="post" enctype="multipart/form-data" class="mt-3">
-                    {% csrf_token %}
-                    <input type="hidden" name="file_id" value="{{ file.id }}">
-                    <input type="hidden" name="action" value="edit">
-                    <div class="input-group mb-2">
-                        <input type="file" name="uploaded_file" class="form-control">
-                        <button type="submit" class="btn btn-success">
-                            <i class="bi bi-pencil-square"></i> Yangilash
-                        </button>
-                    </div>
-                </form>
+                {% if file.criteria.is_scored %}
+                    <!-- Faylni yangilash -->
+                    <form method="post" enctype="multipart/form-data" class="mt-3">
+                        {% csrf_token %}
+                        <input type="hidden" name="file_id" value="{{ file.id }}">
+                        <input type="hidden" name="action" value="edit">
+                        <div class="input-group mb-2">
+                            <input type="file" name="uploaded_file" class="form-control">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-pencil-square"></i> Yangilash
+                            </button>
+                        </div>
+                    </form>
 
-                <form method="post" class="d-inline">
-                    {% csrf_token %}
-                    <input type="hidden" name="file_id" value="{{ file.id }}">
-                    <input type="hidden" name="action" value="delete">
-                    <button type="submit" class="btn btn-danger btn-sm mt-1">
-                        <i class="bi bi-trash"></i> O‘chirish
-                    </button>
-                </form>
+                    <!-- Faylni o'chirish -->
+                    <form method="post" class="d-inline">
+                        {% csrf_token %}
+                        <input type="hidden" name="file_id" value="{{ file.id }}">
+                        <input type="hidden" name="action" value="delete">
+                        <button type="submit" class="btn btn-danger btn-sm mt-1">
+                            <i class="bi bi-trash"></i> O‘chirish
+                        </button>
+                    </form>
+                {% else %}
+                    <div class="alert alert-warning mt-3">
+                        Faylni yangilash yoki o‘chirish mumkin emas — yuklash muddati yakunlangan.
+                    </div>
+                {% endif %}
             </div>
         </div>
     {% empty %}
