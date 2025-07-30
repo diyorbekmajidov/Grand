@@ -3,9 +3,11 @@
 {% block content %}
 <div class="container mt-5">
     <h3 class="mb-4">Siz yuklagan fayllar</h3>
-    <a href="{% url 'export_social_pdf' student.id %}" class="btn btn-primary">
+    <!-- <a href="{% url 'export_social_pdf' student.id %}" class="btn btn-primary">
         Bahoni PDF ko‘chirish
-    </a>
+    </a> -->
+    <a href="{% url 'export_excel' student.pk %}" class="btn btn-success mb-4">📥 Bahoni Excel yuklab olish</a>
+
 
     {% for file in files %}
         <div class="card mb-3">
