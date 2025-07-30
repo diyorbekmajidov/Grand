@@ -19,13 +19,70 @@ from weasyprint import HTML
 from .models import StudentFiles
 import tempfile
 
+import openpyxl
+from openpyxl.utils import get_column_letter
+from openpyxl.styles import Font, Alignment
+from django.http import HttpResponse
+from .models import StudentFiles, Criteria
+
+import xlsxwriter
+from io import BytesIO
+
+
 date_string = "2025-07-25"
 date_object = datetime.datetime.strptime(date_string, "%Y-%m-%d")
 current_datetime = datetime.datetime.now()
 
+
 from .serializers import StudentSerializer,StudentFilesSerializer
+
 def landing_page(request):
     return render(request, 'homepage.html')
+
+
+def export_social_activity_excel(request, pk):
+    student = get_object_or_404(Student, pk=pk)
+    student_files = StudentFiles.objects.filter(student=student)
+    criteria_list = Criteria.objects.all()
+
+    # Yangi Excel fayl
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Social Activity Scores"
+
+    # Headerlar: Talaba, Fakultet, Guruh, Mezonlar, Umumiy ball
+    headers = ['Talaba', 'Fakultet', 'Guruh']
+    headers += [c.title for c in criteria_list]
+    headers.append('Umumiy ball')
+    ws.append(headers)
+
+    # Talaba haqida ma'lumot
+    row = [
+        student.student_name,
+        student.faculty if student.faculty else "",
+        student.groups[0].get('name', '-') if student.groups else ""
+    ]
+
+    total_score = 0
+    for criterion in criteria_list:
+        file = student_files.filter(criteria=criterion).first()
+        score = file.task_score if file and file.task_score else 0
+        row.append(score)
+        total_score += score
+
+    row.append(total_score)
+    ws.append(row)
+    for i, column in enumerate(ws.iter_cols(min_row=1, max_row=1), 1):
+        col_letter = get_column_letter(i)
+        ws.column_dimensions[col_letter].width = 20 
+
+    # Excel response
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename="{student.student_name}_social_scores.xlsx"'
+    wb.save(response)
+    return response
+
+
 
 def home(request:HttpRequest):
     student_hemis_id = request.COOKIES.get('student_hemis_id')
