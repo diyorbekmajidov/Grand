@@ -82,6 +82,47 @@ def export_social_activity_excel(request, pk):
     wb.save(response)
     return response
 
+def export_all_excel(request):
+    students = Student.objects.all()
+    criteria_list = Criteria.objects.all()
+    student_files = StudentFiles.objects.all()
+    
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = "Social Activity Scores"
+
+    headers = ['Talaba', 'Fakultet', 'Guruh']
+    headers += [c.title for c in criteria_list]
+    headers.append('Umumiy ball')
+    ws.append(headers)
+
+    for student in students:
+        row = [
+            student.student_name,
+            student.faculty if student.faculty else "",
+            student.groups[0].get('name', '-') if student.groups else ""
+        ]
+        total_score = 0
+        for criterion in criteria_list:
+            file = student_files.filter(student=student, criteria=criterion).first()
+            if file and file.is_scored:
+                score = file.task_score if file.task_score else 0
+            else:
+                score = 0
+            row.append(score)
+            total_score += score
+        row.append(total_score)
+        ws.append(row)
+
+    for i, column in enumerate(ws.iter_cols(min_row=1, max_row=1), 1):
+        col_letter = get_column_letter(i)
+        ws.column_dimensions[col_letter].width = 20
+
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = f'attachment; filename="social_scores.xlsx"'
+    wb.save(response)
+    return response
+
 
 
 def home(request:HttpRequest):

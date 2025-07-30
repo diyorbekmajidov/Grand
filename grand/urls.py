@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import AuthLoginView, AuthCallbackView, faculty_list, home,export_social_activity_excel, supervisor_login,export_social_activity_pdf, download_student_score_pdf, faculty_detail, student_files, score_file, landing_page, contact, student_profile, logout_view,criteria,upload_file
+from .views import AuthLoginView, AuthCallbackView, faculty_list, home,export_social_activity_excel, export_all_excel ,supervisor_login,export_social_activity_pdf, download_student_score_pdf, faculty_detail, student_files, score_file, landing_page, contact, student_profile, logout_view,criteria,upload_file
 
 
 urlpatterns = [
@@ -12,6 +12,7 @@ urlpatterns = [
     path('student-file/<int:pk>/download/', download_student_score_pdf, name='download_student_score_pdf'),
     path('export/pdf/social/<int:pk>/', export_social_activity_pdf, name='export_social_pdf'),
     path('export/excel/<int:pk>/', export_social_activity_excel, name='export_excel'),
+    path('export/excel/all/', export_all_excel, name="export_all_excal"),
 
 
 
