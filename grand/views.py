@@ -138,7 +138,8 @@ def faculty_list(request):
         "Aniq va amaliy fanlar",
         "Maktabgacha va Boshlang'ich ta'lim",
         "Pedagogika va jismoniy madaniyat",
-        "Tillar"
+        "Tillar",
+        "Magistratura mutaxassisligi"
     ]
     return render(request, 'faculty_list.html', {'faculties': faculties})
 
