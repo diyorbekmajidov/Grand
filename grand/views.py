@@ -29,7 +29,7 @@ import xlsxwriter
 from io import BytesIO
 
 
-date_string = "2025-07-25"
+date_string = "2025-08-11"
 date_object = datetime.datetime.strptime(date_string, "%Y-%m-%d")
 current_datetime = datetime.datetime.now()
 
@@ -216,6 +216,7 @@ def criteria(request:HttpRequest):
 
 def upload_file(request:HttpRequest, criteria_id):
     criteria = get_object_or_404(Criteria, pk=criteria_id)
+    # serializer = 
     print(criteria)
     student_hemis_id = request.COOKIES.get('student_hemis_id')
     if not student_hemis_id:
