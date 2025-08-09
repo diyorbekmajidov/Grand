@@ -42,7 +42,7 @@ class StudentAdmin(ExportMixin, admin.ModelAdmin):  # asosiy class
 
     
 class StudentFilesAdmin(admin.ModelAdmin):
-    list_display = ('student', 'criteria','task_score',)
+    list_display = ('student', 'criteria','task_score','initial_score')
     search_fields = ('student__student_name', 'criteria__title',)
 
 # admin.site.register(Student, StudentAdmin)
