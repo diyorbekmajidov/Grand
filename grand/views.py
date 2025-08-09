@@ -1,32 +1,24 @@
+import requests, os, openpyxl, tempfile, datetime
+
 from django.views import View
-from django.http import HttpRequest, JsonResponse, HttpResponse
+from django.http import HttpRequest, JsonResponse, HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect, get_object_or_404
 from .client import oAuth2Client
 from django.conf import settings
-from django.http import HttpResponseRedirect
-from django.core.cache import cache
 from .models import Student, Criteria, StudentFiles
 from .forms import StudentFilesForm, StudentFileForm
-import requests, os
+
 from django.core.files.base import ContentFile
 from urllib.parse import urlparse
 from django.contrib import messages
 from django.contrib.auth import logout, authenticate, login
-import datetime
+from django.contrib.auth.decorators import user_passes_test
 
 from django.template.loader import render_to_string
 from weasyprint import HTML
-from .models import StudentFiles
-import tempfile
 
-import openpyxl
 from openpyxl.utils import get_column_letter
-from openpyxl.styles import Font, Alignment
-from django.http import HttpResponse
-from .models import StudentFiles, Criteria
 
-import xlsxwriter
-from io import BytesIO
 
 
 date_string = "2025-08-11"
@@ -123,7 +115,10 @@ def export_all_excel(request):
     wb.save(response)
     return response
 
-
+@user_passes_test(lambda u: u.is_superuser)
+def reset_score(request):
+    update_count = StudentFiles.objects.update(is_scored = False, task_score = 0)
+    return JsonResponse({"message": f"{update_count} ta student yangilandi"})
 
 def home(request:HttpRequest):
     student_hemis_id = request.COOKIES.get('student_hemis_id')

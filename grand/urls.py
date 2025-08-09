@@ -1,8 +1,10 @@
 from django.urls import path
-from .views import AuthLoginView, AuthCallbackView, faculty_list, home,export_social_activity_excel, export_all_excel ,supervisor_login,export_social_activity_pdf, download_student_score_pdf, faculty_detail, student_files, score_file, landing_page, contact, student_profile, logout_view,criteria,upload_file
+from .views import AuthLoginView, AuthCallbackView, faculty_list, reset_score, home,export_social_activity_excel, export_all_excel ,supervisor_login,export_social_activity_pdf, download_student_score_pdf, faculty_detail, student_files, score_file, landing_page, contact, student_profile, logout_view,criteria,upload_file
 
 
 urlpatterns = [
+    path('reset-scores/', reset_score, name="reset_score"),
+
     path('', landing_page),
     path('supervisor/login/', supervisor_login, name='supervisor-login'),
     path('faculty-fiels/', faculty_list, name="faculty_list"),
